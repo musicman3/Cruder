@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Cruder;
 
 use eMarket\Core\{
-    Func,
     Settings
 };
 
@@ -101,7 +100,7 @@ class Pdo {
         if ($exec && $exec->execute($param)) {
             $result = $exec->fetchColumn();
         }
-        return Func::outputDataFiltering($result);
+        return CrudHelper::outputDataFiltering($result);
     }
 
     /**
@@ -118,7 +117,7 @@ class Pdo {
         if ($exec && $exec->execute($param)) {
             $result = $exec->fetchAll(\PDO :: FETCH_NUM);
         }
-        return Func::outputDataFiltering($result);
+        return CrudHelper::outputDataFiltering($result);
     }
 
     /**
@@ -135,7 +134,7 @@ class Pdo {
         if ($exec && $exec->execute($param)) {
             $result = $exec->fetchAll(\PDO :: FETCH_ASSOC);
         }
-        return Func::outputDataFiltering($result);
+        return CrudHelper::outputDataFiltering($result);
     }
 
     /**

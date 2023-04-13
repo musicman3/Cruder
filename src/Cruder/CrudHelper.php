@@ -48,4 +48,49 @@ class CrudHelper {
         return FALSE;
     }
 
+    /**
+     * Function for escaping special characters.
+     * Output data filtering 
+     *
+     * @param string|array $data Data to escape characters
+     * @return mixed
+     */
+    public static function outputDataFiltering(mixed $data): mixed {
+        // symbol and replacement
+        $find = ["'", "script", "/.", "./"];
+        $replace = ["&#8216;", "!s-c-r-i-p-t!", "!/.!", "!./!"];
+
+        $output = self::recursiveArrayReplace($find, $replace, $data);
+
+        return $output;
+    }
+
+    /**
+     * Recursive array replace
+     *
+     * @param string|array $find Find value
+     * @param string|array $replace Replace value
+     * @param string|array $data Input data
+     * @return mixed
+     */
+    public static function recursiveArrayReplace(array|string $find, array|string $replace, mixed $data): mixed {
+        if (is_bool($data) || is_null($data)) {
+            return $data;
+        }
+
+        if (is_int($data)) {
+            return str_ireplace($find, $replace, (string) $data);
+        }
+
+        if (!is_array($data)) {
+            return str_ireplace($find, $replace, $data);
+        }
+
+        $output = [];
+        foreach ($data as $key => $value) {
+            $output[$key] = self::recursiveArrayReplace($find, $replace, $value);
+        }
+        return $output;
+    }
+
 }
