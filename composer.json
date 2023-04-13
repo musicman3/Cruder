@@ -1,5 +1,5 @@
 {
-    "name": "musicman3/Cruder",
+    "name": "musicman3/cruder",
     "description": "CRUD Query Builder with PDO",
     "type": "library",
     "require": {
