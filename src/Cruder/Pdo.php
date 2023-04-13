@@ -18,7 +18,7 @@ use eMarket\Core\{
  * PDO
  *
  * @package Core
- * @author Cruder Team
+ * @author Cruder Team & eMarket Team
  * @copyright © 2023 Cruder
  * @license APACHE-2.0 LICENSE
  * 
