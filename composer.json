@@ -11,6 +11,11 @@
             "Cruder\\": "src/Cruder"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Cruder\\": "src/Cruder"
+        }
+    },
     "authors": [
         {
             "name": "Cruder and eMarket Team"
