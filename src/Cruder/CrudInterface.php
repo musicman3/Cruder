@@ -188,7 +188,16 @@ interface CrudInterface {
     /**
      * Save
      * 
-     * @return object
+     * @return mixed
      */
     public function save(): mixed;
+
+    /**
+     * Install DB-file
+     *
+     * @param string $path Path to DB
+     * @param string $db_prefix Prefix in sql file 
+     * @return mixed
+     */
+    public static function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed;
 }

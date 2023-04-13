@@ -11,7 +11,8 @@ namespace Cruder\Mysql;
 
 use Cruder\{
     CrudInterface,
-    CrudHelper
+    CrudHelper,
+    Pdo
 };
 
 /**
@@ -274,7 +275,7 @@ class Methods extends CrudHelper implements CrudInterface {
     /**
      * Save
      * 
-     * @return object
+     * @return mixed
      */
     public function save(): mixed {
         if ($this->action == 'create') {
@@ -287,6 +288,30 @@ class Methods extends CrudHelper implements CrudInterface {
             return $this->finalData('DELETE FROM ' . $this->table . ' ');
         }
         return $this->finalData('SELECT ');
+    }
+
+    /**
+     * Install DB-file
+     *
+     * @param string $path Path to DB
+     * @param string $db_prefix Prefix in sql file 
+     * @return mixed
+     */
+    public static function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
+
+        $set = Pdo::$set;
+
+        $file_name = $path . $set['db_type'] . '.sql';
+
+        $buffer = str_replace($db_prefix, $set['db_prefix'], implode(file($file_name)));
+
+        if ($set['db_family'] == 'myisam') {
+            $buffer = str_ireplace('ENGINE=InnoDB', 'ENGINE=MyISAM', $buffer);
+        }
+
+        Pdo::getExec($buffer);
+
+        return true;
     }
 
 }

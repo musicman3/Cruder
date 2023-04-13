@@ -23,10 +23,28 @@ use eMarket\Core\{
  * @license APACHE-2.0 LICENSE
  * 
  */
-final class Pdo {
+class Pdo {
 
     public static $query_count = 0;
     private static $connect = null;
+
+    /** DB Settings
+
+     * EXAMPLE:
+
+      $set = [
+      'db_type' => 'mysql',
+      'db_server' => 'localhost',
+      'db_name' => 'my_db',
+      'db_username' => 'root',
+      'db_password' => 'pass',
+      'db_prefix' => 'emkt_',
+      'db_port' => '3306',
+      'db_family' => 'myisam'
+      ];
+
+     */
+    public static $set;
 
     /**
      * Conecting to DB
@@ -42,10 +60,10 @@ final class Pdo {
             return self::$connect;
         }
 
-        if (self::$connect == null && defined('DB_TYPE') && defined('DB_SERVER') && defined('DB_NAME') && defined('DB_USERNAME') && defined('DB_PASSWORD')) {
+        if (self::$connect == null && isset(self::$set['db_type'], self::$set['db_server'], self::$set['db_name'], self::$set['db_username'], self::$set['db_password'])) {
 
             try {
-                self::$connect = new \PDO(DB_TYPE . ':host=' . DB_SERVER . ';dbname=' . DB_NAME, DB_USERNAME, DB_PASSWORD, [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"]);
+                self::$connect = new \PDO(self::$set['db_type'] . ':host=' . self::$set['db_server'] . ';dbname=' . self::$set['db_name'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"]);
             } catch (\PDOException $error) {
                 if (Settings::path() == 'install') {
                     header('Location: /controller/install/error.php?server_db_error=true&error_message=' . $error->getMessage());
@@ -55,24 +73,6 @@ final class Pdo {
         }
 
         return self::$connect;
-    }
-
-    /**
-     * Install DB-file
-     *
-     * @param string $path Path to DB
-     */
-    public static function dbInstall(string $path): void {
-
-        $file_name = $path . DB_TYPE . '.sql';
-
-        $buffer = str_replace('emkt_', DB_PREFIX, implode(file($file_name)));
-
-        if (DB_FAMILY == 'myisam') {
-            $buffer = str_ireplace('ENGINE=InnoDB', 'ENGINE=MyISAM', $buffer);
-        }
-
-        self::getExec($buffer);
     }
 
     /**

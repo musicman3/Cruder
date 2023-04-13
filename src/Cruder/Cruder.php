@@ -29,7 +29,7 @@ class Cruder implements CrudInterface {
      *
      */
     function __construct() {
-        if (DB_TYPE == 'mysql') {
+        if (Pdo::$set['db_type'] == 'mysql') {
             $this->crud = new MysqlAdapter();
         }
     }
@@ -242,10 +242,21 @@ class Cruder implements CrudInterface {
     /**
      * Save
      * 
-     * @return object
+     * @return mixed
      */
     public function save(): mixed {
         return $this->crud->save();
+    }
+
+    /**
+     * Install DB-file
+     *
+     * @param string $path Path to DB
+     * @param string $db_prefix Prefix in sql file 
+     * @return mixed
+     */
+    public static function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
+        return $this->dbInstall($path, $db_prefix);
     }
 
 }
