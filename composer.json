@@ -11,7 +11,7 @@
     "license": "APACHE-2.0 LICENSE",
     "autoload": {
         "psr-4": {
-            "Cruder\\": "src/"
+            "Cruder\\": "src/Cruder"
         }
     },
     "authors": [
