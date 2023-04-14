@@ -1,4 +1,7 @@
 # Cruder Query Builder
+
+Project installation: `composer require musicman3/cruder`
+
 The Cruder Project is a CRUD system for working with databases based on the Query Builder principle and using PDO. This project is primarily developed for the eMarket project: https://github.com/musicman3/eMarket
 
 At the same time, the library is extracted into a separate project to allow anyone who likes Cruder to use it in their own projects.
@@ -55,5 +58,3 @@ $id = $this->db
 
 ```
 All available methods can be viewed in the file CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
-
-Project installation: `composer require musicman3/cruder`
