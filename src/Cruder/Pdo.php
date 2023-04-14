@@ -9,10 +9,6 @@ declare(strict_types=1);
 
 namespace Cruder;
 
-use eMarket\Core\{
-    Settings
-};
-
 /**
  * PDO
  *
@@ -48,9 +44,9 @@ class Pdo {
     /**
      * Conecting to DB
      * @param string $status Marker
-     * @return object PDO object
+     * @return mixed PDO object or error message
      */
-    public static function connect(?string $status = null): ?object {
+    public static function connect(?string $status = null): mixed {
 
         self::$query_count++;
 
@@ -64,10 +60,7 @@ class Pdo {
             try {
                 self::$connect = new \PDO(self::$set['db_type'] . ':host=' . self::$set['db_server'] . ';dbname=' . self::$set['db_name'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"]);
             } catch (\PDOException $error) {
-                if (Settings::path() == 'install') {
-                    header('Location: /controller/install/error.php?server_db_error=true&error_message=' . $error->getMessage());
-                    exit;
-                }
+                return $error->getMessage();
             }
         }
 

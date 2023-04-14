@@ -252,7 +252,7 @@ class Cruder implements CrudInterface {
      * Install DB-file
      *
      * @param string $path Path to DB
-     * @param string $db_prefix Prefix in sql file 
+     * @param string $db_prefix Prefix in the database to be replaced with the one set
      * @return mixed
      */
     public static function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
