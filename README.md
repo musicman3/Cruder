@@ -26,7 +26,7 @@ Pdo::$set = [
         'db_password' => 'my_password',
         'db_prefix' => 'emkt_',
         'db_port' => '3306',
-        'db_family' => 'myisam'
+        'db_family' => 'innodb'
     ];
 
 // Here we perform various actions that you will need for your project.
