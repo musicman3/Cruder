@@ -28,6 +28,7 @@ Pdo::$set = [
         'db_family' => 'myisam'
     ];
 
+// Here we perform various actions that you will need for your project.
 $this->db = new Cruder();
 
 // Close DB connect
