@@ -12,8 +12,6 @@ To start using Cruder, you need to initialize database settings. After initializ
 
 ```php
 
-<?php 
-
 use \Cruder\{
     Cruder,
     Pdo
@@ -37,14 +35,10 @@ $this->db = new Cruder();
 // Close DB connect
 Pdo::connect('close');
 
-?>
-
 ```
 There are various methods for working with a database. All of them are documented using PHPDoc and PHPDoc tags according to PSR-5 and PSR-19 standards. A call chain is used when forming a query. Here's an example of what it looks like:
 
 ```php
-
-<?php 
 
 $this->db = new Cruder();
 $id = $this->db
@@ -53,8 +47,6 @@ $id = $this->db
                 ->where('order >=', 5)
                 ->orderByDesc('id')
                 ->save();
-
-?>
 
 ```
 All available methods can be viewed in the file CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
