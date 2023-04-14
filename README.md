@@ -55,3 +55,5 @@ $id = $this->db
 
 ```
 All available methods can be viewed in the file CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
+
+Project installation: `composer require musicman3/cruder`
