@@ -9,10 +9,15 @@ To start using Cruder, you need to initialize database settings. After initializ
 
 ```php
 
-    <?php 
+<?php 
+
+use \Cruder\{
+    Cruder,
+    Pdo
+};
 
 // DB settings
-Cruder\Pdo::$set = [
+Pdo::$set = [
         'db_type' => 'mysql',
         'db_server' => 'localhost',
         'db_name' => 'my_base',
@@ -23,9 +28,29 @@ Cruder\Pdo::$set = [
         'db_family' => 'myisam'
     ];
 
+$this->db = new Cruder();
+
 // Close DB connect
 Pdo::connect('close');
 
 ?>
 
 ```
+There are various methods for working with a database. All of them are documented using PHPDoc and PHPDoc tags according to PSR-5 and PSR-19 standards. A call chain is used when forming a query. Here's an example of what it looks like:
+
+```php
+
+<?php 
+
+$this->db = new Cruder();
+$id = $this->db
+                ->read('my_table')
+                ->selectGetValue('id')
+                ->where('order>=', 5)
+                ->orderByDesc('id')
+                ->save();
+
+?>
+
+```
+All available methods can be viewed in the file CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
