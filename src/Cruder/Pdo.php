@@ -60,7 +60,8 @@ class Pdo {
             try {
                 self::$connect = new \PDO(self::$set['db_type'] . ':host=' . self::$set['db_server'] . ';dbname=' . self::$set['db_name'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"]);
             } catch (\PDOException $error) {
-                return $error->getMessage();
+                //header('Location: /controller/install/error.php/controller/install/error.php?server_db_error=true&error_message=' . $error->getMessage());
+                return '?server_db_error=true&error_message=' . $error->getMessage();
             }
         }
 
