@@ -46,7 +46,7 @@ $this->db = new Cruder();
 $id = $this->db
                 ->read('my_table')
                 ->selectGetValue('id')
-                ->where('order>=', 5)
+                ->where('order >=', 5)
                 ->orderByDesc('id')
                 ->save();
 
