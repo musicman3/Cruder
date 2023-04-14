@@ -50,3 +50,10 @@ $id = $this->db
 
 ```
 All available methods can be viewed in the file CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
+
+# PHP Standards Recommendations Used: 
+  - PSR-1 (Basic Coding Standard)
+  - PSR-4 (Autoloading Standard)
+  - PSR-5 (PHPDoc Standard)
+  - PSR-12 (Extended Coding Style Guide)
+  - PSR-19 (PHPDoc tags)
