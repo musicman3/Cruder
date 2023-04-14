@@ -14,7 +14,7 @@ use Cruder\Mysql\MysqlAdapter;
 /**
  * CRUD Query Builder
  *
- * @package Core
+ * @package Cruder 
  * @author Cruder Team
  * @copyright © 2023 Cruder
  * @license APACHE-2.0 LICENSE
