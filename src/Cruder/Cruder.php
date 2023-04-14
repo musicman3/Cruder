@@ -17,7 +17,7 @@ use Cruder\Mysql\MysqlAdapter;
  * @package Cruder 
  * @author Cruder Team
  * @copyright © 2023 Cruder
- * @license APACHE-2.0 LICENSE
+ * @license Apache-2.0
  * 
  */
 class Cruder implements CrudInterface {
