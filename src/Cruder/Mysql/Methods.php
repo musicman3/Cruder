@@ -81,8 +81,10 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function set(string $identificator, mixed $value): object {
-        $this->set .= $identificator . '=?, ';
-        $this->crud[] = (string) $value;
+        if ($value) {
+            $this->set .= $identificator . '=?, ';
+            $this->crud[] = (string) $value;
+        }
         return $this;
     }
 
@@ -94,8 +96,10 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function where(string $identificator, mixed $value): object {
-        $this->method_chain .= 'WHERE ' . $identificator . '? ';
-        $this->crud[] = (string) $value;
+        if ($value) {
+            $this->method_chain .= 'WHERE ' . $identificator . '? ';
+            $this->crud[] = (string) $value;
+        }
         return $this;
     }
 
@@ -107,8 +111,10 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function and(string $identificator, mixed $value): object {
-        $this->method_chain .= 'AND ' . $identificator . '? ';
-        $this->crud[] = (string) $value;
+        if ($value) {
+            $this->method_chain .= 'AND ' . $identificator . '? ';
+            $this->crud[] = (string) $value;
+        }
         return $this;
     }
 
@@ -120,8 +126,10 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function or(string $identificator, mixed $value): object {
-        $this->method_chain .= 'OR ' . $identificator . '? ';
-        $this->crud[] = (string) $value;
+        if ($value) {
+            $this->method_chain .= 'OR ' . $identificator . '? ';
+            $this->crud[] = (string) $value;
+        }
         return $this;
     }
 
@@ -178,15 +186,17 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function operator(string $operator, string $identificator = '', mixed $value = ''): object {
+        if ($value) {
 
-        $sign = '? ';
+            $sign = '? ';
 
-        if ($identificator == '') {
-            $sign = '';
+            if ($identificator == '') {
+                $sign = '';
+            }
+
+            $this->method_chain .= $operator . ' ' . $identificator . $sign;
+            $this->crud[] = (string) $value;
         }
-
-        $this->method_chain .= $operator . ' ' . $identificator . $sign;
-        $this->crud[] = (string) $value;
         return $this;
     }
 
