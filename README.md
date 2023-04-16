@@ -62,14 +62,14 @@ $this->db
 $this->db
          ->update('my_table')
          ->set('text', 'This is my now text')
-         ->where('id=', 10)
-         ->or('order>=' 5)
+         ->where('id =', 10)
+         ->or('order >=' 5)
          ->save();
 
 // Delete
 $this->db
          ->delete('my_table')
-         ->where('id=', 10)
+         ->where('id =', 10)
          ->save();
 
 ```
