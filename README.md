@@ -41,12 +41,36 @@ There are various methods for working with a database. All of them are documente
 ```php
 
 $this->db = new Cruder();
+
+// Read (SELECT)
 $id = $this->db
                 ->read('my_table')
-                ->selectGetValue('id')
+                ->selectGetAssoc('id')
                 ->where('order >=', 5)
                 ->orderByDesc('id')
                 ->save();
+
+// Create (INSERT INTO)
+$this->db
+         ->create('my_table')
+         ->set('id', 10)
+         ->set('order', 5)
+         ->set('text', 'This is my text')
+         ->save();
+
+// Update
+$this->db
+         ->update('my_table')
+         ->set('text', 'This is my now text')
+         ->where('id=', 10)
+         ->or('order>=' 5)
+         ->save();
+
+// Delete
+$this->db
+         ->delete('my_table')
+         ->where('id=', 10)
+         ->save();
 
 ```
 All available methods can be viewed in the file CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
