@@ -196,7 +196,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetAssoc(string $identificator): object {
+    public function selectAssoc(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getAssoc';
         return $this;
@@ -208,7 +208,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetIndex(string $identificator): object {
+    public function selectIndex(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getIndex';
         return $this;
@@ -220,7 +220,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetValue(string $identificator): object {
+    public function selectValue(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getValue';
         return $this;
@@ -232,7 +232,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetObj(string $identificator): object {
+    public function selectObj(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getObj';
         return $this;
@@ -244,7 +244,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetColCount(string $identificator): object {
+    public function selectColCount(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getColCount';
         return $this;
@@ -256,7 +256,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetRowCount(string $identificator): object {
+    public function selectRowCount(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getRowCount';
         return $this;

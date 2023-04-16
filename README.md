@@ -45,7 +45,7 @@ $this->db = new Cruder();
 // Read (SELECT)
 $id = $this->db
                 ->read('my_table')
-                ->selectGetAssoc('id')
+                ->selectAssoc('id')
                 ->where('order >=', 5)
                 ->orderByDesc('id')
                 ->save();

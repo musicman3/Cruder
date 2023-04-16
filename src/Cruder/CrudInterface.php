@@ -136,7 +136,7 @@ interface CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetAssoc(string $identificator): object;
+    public function selectAssoc(string $identificator): object;
 
     /**
      * Get an indexed array 
@@ -144,7 +144,7 @@ interface CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetIndex(string $identificator): object;
+    public function selectIndex(string $identificator): object;
 
     /**
      * Get value
@@ -152,7 +152,7 @@ interface CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetValue(string $identificator): object;
+    public function selectValue(string $identificator): object;
 
     /**
      * Get object
@@ -160,7 +160,7 @@ interface CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetObj(string $identificator): object;
+    public function selectObj(string $identificator): object;
 
     /**
      * Count the number of columns 
@@ -168,7 +168,7 @@ interface CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetColCount(string $identificator): object;
+    public function selectColCount(string $identificator): object;
 
     /**
      * Count the number of rows 
@@ -176,7 +176,7 @@ interface CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetRowCount(string $identificator): object;
+    public function selectRowCount(string $identificator): object;
 
     /**
      * Last Insert Id

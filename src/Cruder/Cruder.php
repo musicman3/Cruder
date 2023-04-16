@@ -176,8 +176,8 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetAssoc(string $identificator): object {
-        return $this->crud->selectGetAssoc($identificator);
+    public function selectAssoc(string $identificator): object {
+        return $this->crud->selectAssoc($identificator);
     }
 
     /**
@@ -186,8 +186,8 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetIndex(string $identificator): object {
-        return $this->crud->selectGetIndex($identificator);
+    public function selectIndex(string $identificator): object {
+        return $this->crud->selectIndex($identificator);
     }
 
     /**
@@ -196,8 +196,8 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetValue(string $identificator): object {
-        return $this->crud->selectGetValue($identificator);
+    public function selectValue(string $identificator): object {
+        return $this->crud->selectValue($identificator);
     }
 
     /**
@@ -206,8 +206,8 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetObj(string $identificator): object {
-        return $this->crud->selectGetObj($identificator);
+    public function selectObj(string $identificator): object {
+        return $this->crud->selectObj($identificator);
     }
 
     /**
@@ -216,8 +216,8 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetColCount(string $identificator): object {
-        return $this->crud->selectGetColCount($identificator);
+    public function selectColCount(string $identificator): object {
+        return $this->crud->selectColCount($identificator);
     }
 
     /**
@@ -226,8 +226,8 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
-    public function selectGetRowCount(string $identificator): object {
-        return $this->crud->selectGetRowCount($identificator);
+    public function selectRowCount(string $identificator): object {
+        return $this->crud->selectRowCount($identificator);
     }
 
     /**
