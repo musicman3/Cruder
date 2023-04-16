@@ -81,10 +81,12 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function set(string $identificator, mixed $value): object {
-        if ($value) {
-            $this->set .= $identificator . '=?, ';
-            $this->crud[] = (string) $value;
+        if (!$value) {
+            $value = null;
         }
+        $this->set .= $identificator . '=?, ';
+        $this->crud[] = $value;
+
         return $this;
     }
 
@@ -96,10 +98,12 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function where(string $identificator, mixed $value): object {
-        if ($value) {
-            $this->method_chain .= 'WHERE ' . $identificator . '? ';
-            $this->crud[] = (string) $value;
+        if (!$value) {
+            $value = null;
         }
+        $this->method_chain .= 'WHERE ' . $identificator . '? ';
+        $this->crud[] = $value;
+
         return $this;
     }
 
@@ -111,10 +115,12 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function and(string $identificator, mixed $value): object {
-        if ($value) {
-            $this->method_chain .= 'AND ' . $identificator . '? ';
-            $this->crud[] = (string) $value;
+        if (!$value) {
+            $value = null;
         }
+        $this->method_chain .= 'AND ' . $identificator . '? ';
+        $this->crud[] = $value;
+
         return $this;
     }
 
@@ -126,10 +132,12 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function or(string $identificator, mixed $value): object {
-        if ($value) {
-            $this->method_chain .= 'OR ' . $identificator . '? ';
-            $this->crud[] = (string) $value;
+        if (!$value) {
+            $value = null;
         }
+        $this->method_chain .= 'OR ' . $identificator . '? ';
+        $this->crud[] = $value;
+
         return $this;
     }
 
@@ -186,17 +194,19 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function operator(string $operator, string $identificator = '', mixed $value = ''): object {
-        if ($value) {
-
-            $sign = '? ';
-
-            if ($identificator == '') {
-                $sign = '';
-            }
-
-            $this->method_chain .= $operator . ' ' . $identificator . $sign;
-            $this->crud[] = (string) $value;
+        if (!$value) {
+            $value = null;
         }
+
+        $sign = '? ';
+
+        if ($identificator == '') {
+            $sign = '';
+        }
+
+        $this->method_chain .= $operator . ' ' . $identificator . $sign;
+        $this->crud[] = $value;
+
         return $this;
     }
 
