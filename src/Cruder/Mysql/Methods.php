@@ -81,7 +81,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function set(string $identificator, mixed $value): object {
-        if (!$value) {
+        if ($value === false || $value === '') {
             $value = null;
         }
         $this->set .= $identificator . '=?, ';
@@ -98,7 +98,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function where(string $identificator, mixed $value): object {
-        if (!$value) {
+        if ($value === false || $value === '') {
             $value = null;
         }
         $this->method_chain .= 'WHERE ' . $identificator . '? ';
@@ -115,7 +115,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function and(string $identificator, mixed $value): object {
-        if (!$value) {
+        if ($value === false || $value === '') {
             $value = null;
         }
         $this->method_chain .= 'AND ' . $identificator . '? ';
@@ -132,7 +132,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function or(string $identificator, mixed $value): object {
-        if (!$value) {
+        if ($value === false || $value === '') {
             $value = null;
         }
         $this->method_chain .= 'OR ' . $identificator . '? ';
@@ -194,7 +194,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @return object
      */
     public function operator(string $operator, string $identificator = '', mixed $value = ''): object {
-        if (!$value) {
+        if ($value === false || $value === '') {
             $value = null;
         }
 
