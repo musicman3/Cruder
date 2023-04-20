@@ -61,7 +61,7 @@ $this->db
 // Update
 $this->db
          ->update('my_table')
-         ->set('text', 'This is my now text')
+         ->set('text', 'This is my new text')
          ->where('id =', 10)
          ->or('order >=' 5)
          ->save();

@@ -159,6 +159,46 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * MONTH (MONTH(date))
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function month(string $identificator): object {
+        return $this->crud->month($identificator);
+    }
+
+    /**
+     * YEAR (YEAR(date))
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function year(string $identificator): object {
+        return $this->crud->year($identificator);
+    }
+
+    /**
+     * DAYOFWEEK (DAYOFWEEK(date))
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function dayofweek(string $identificator): object {
+        return $this->crud->dayofweek($identificator);
+    }
+
+    /**
+     * QUARTER (QUARTER(date))
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function quarter(string $identificator): object {
+        return $this->crud->quarter($identificator);
+    }
+
+    /**
      * Any operator
      * 
      * @param string $operator Any operator
