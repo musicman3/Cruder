@@ -121,38 +121,6 @@ interface CrudInterface {
     public function limit(string $limit): object;
 
     /**
-     * MONTH (MONTH(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function month(string $identificator): object;
-
-    /**
-     * YEAR (YEAR(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function year(string $identificator): object;
-
-    /**
-     * DAYOFWEEK (DAYOFWEEK(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function dayofweek(string $identificator): object;
-
-    /**
-     * QUARTER (QUARTER(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function quarter(string $identificator): object;
-
-    /**
      * Any operator
      * 
      * @param string $operator Any operator

@@ -186,50 +186,6 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
-     * MONTH (MONTH(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function month(string $identificator): object {
-        $this->method_chain .= 'MONTH(' . $identificator . ') ';
-        return $this;
-    }
-
-    /**
-     * YEAR (YEAR(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function year(string $identificator): object {
-        $this->method_chain .= 'YEAR(' . $identificator . ') ';
-        return $this;
-    }
-
-    /**
-     * DAYOFWEEK (DAYOFWEEK(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function dayofweek(string $identificator): object {
-        $this->method_chain .= 'DAYOFWEEK(' . $identificator . ') ';
-        return $this;
-    }
-
-    /**
-     * QUARTER (QUARTER(date))
-     * 
-     * @param string $identificator identificator
-     * @return object
-     */
-    public function quarter(string $identificator): object {
-        $this->method_chain .= 'QUARTER(' . $identificator . ') ';
-        return $this;
-    }
-
-    /**
      * Any operator
      * 
      * @param string $operator Any operator
