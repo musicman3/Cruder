@@ -27,7 +27,8 @@ class CrudHelper {
      * @return output string
      */
     protected function requestNormalization(string|int $str): string {
-        $output = implode(' ', array_filter(explode(' ', $str)));
+        $prepare = implode(' ', array_filter(explode(' ', $str)));
+        $output = $this->originalSyntax($prepare);
         return $output;
     }
 
@@ -46,6 +47,31 @@ class CrudHelper {
             return $output;
         }
         return FALSE;
+    }
+
+    /**
+     * Original DB syntax
+     * Example for MySQL:
+     * Input: email, order_total, {DAYOFWEEK->date_purchased}
+     * Output: email, order_total, DAYOFWEEK(date_purchased)
+     * 
+     * @param string $input Input SQL not-formating string
+     */
+    private function originalSyntax(string $input): mixed {
+
+        $DbPattern = new DbFunctions();
+
+        preg_match_all('|{(.*)}|isU', $input, $data);
+
+        $func = [];
+        foreach ($data[1] as $value) {
+            $explode_data = explode('->', $value);
+            $func[] = $DbPattern->pattern($explode_data[0], $explode_data[1]);
+        }
+
+        $output = str_replace($data[0], $func, $input);
+
+        return $output;
     }
 
     /**

@@ -16,7 +16,7 @@ use Cruder\{
 };
 
 /**
- * CRUD Mysql Adapter
+ * Mysql Methods
  *
  * @package Cruder
  * @author Cruder Team
