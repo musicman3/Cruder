@@ -81,7 +81,9 @@ $data = $this->db
                 ->save();
 
 ```
-All available methods and DB-functions can be viewed in the files CrudInterface.php and DbFunctionsInterface.php or by viewing the description of these methods using tooltips in your IDE.
+Using your own syntax to work with database functions allows you to use multiple types of databases simultaneously. For example, you can use MySQL or Postgres. New functions can always be added through the pattern located in the database adapter section. For MySQL, this pattern is located in `Mysql/DbFunctions->pattern()`.
+
+All available methods can be viewed in the files CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
 
 ### PHP Standards Recommendations Used: 
   - PSR-1 (Basic Coding Standard)
