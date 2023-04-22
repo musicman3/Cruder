@@ -76,7 +76,7 @@ $this->db
 $data = $this->db
                 ->read('my_table')
                 ->selectAssoc('id, name, {YEAR->date_created}')
-                ->where('{YEAR->date_created} =', 2021)
+                ->where('{YEAR->date_created} =', '2021-04-21 20:38:40')
                 ->orderByDesc('id')
                 ->save();
 
