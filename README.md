@@ -72,8 +72,17 @@ $this->db
          ->where('id =', 10)
          ->save();
 
+// use DB-functions
+// YEAR(date_created)
+$data = $this->db
+                ->read('my_table')
+                ->selectAssoc('id, name, {YEAR->date_created}')
+                ->where('{YEAR->date_created} =', 2021)
+                ->orderByDesc('id')
+                ->save();
+
 ```
-All available methods can be viewed in the file CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
+All available methods and DB-functions can be viewed in the files CrudInterface.php and DbFunctionsInterface.php or by viewing the description of these methods using tooltips in your IDE.
 
 ### PHP Standards Recommendations Used: 
   - PSR-1 (Basic Coding Standard)
