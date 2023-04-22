@@ -72,8 +72,7 @@ $this->db
          ->where('id =', 10)
          ->save();
 
-// use DB-functions
-// YEAR(date_created)
+// use DB-functions -> for example YEAR(date_created)
 $data = $this->db
                 ->read('my_table')
                 ->selectAssoc('id, name, {YEAR->date_created}')
