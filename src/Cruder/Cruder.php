@@ -55,6 +55,16 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * SELECT DISTINCT
+     * 
+     * @param string $table table name
+     * @return object
+     */
+    public function selectDistinct(string $table): object {
+        return $this->crud->selectDistinct($table);
+    }
+
+    /**
      * Update
      * 
      * @param string $table table name
@@ -116,6 +126,26 @@ class Cruder implements CrudInterface {
      */
     public function or(string $identificator, mixed $value): object {
         return $this->crud->or($identificator, $value);
+    }
+
+    /**
+     * AS (AS operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function as(string $identificator): object {
+        return $this->crud->as($identificator);
+    }
+
+    /**
+     * GROUP BY identificator
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function groupBy(string $identificator): object {
+        return $this->crud->groupBy($identificator);
     }
 
     /**

@@ -37,6 +37,14 @@ interface CrudInterface {
     public function read(string $table): object;
 
     /**
+     * SELECT DISTINCT
+     * 
+     * @param string $table table name
+     * @return object
+     */
+    public function selectDistinct(string $table): object;
+
+    /**
      * Update
      * 
      * @param string $table table name
@@ -87,6 +95,22 @@ interface CrudInterface {
      * @return object
      */
     public function or(string $identificator, mixed $value): object;
+
+    /**
+     * AS (AS operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function as(string $identificator): object;
+
+    /**
+     * GROUP BY identificator
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function groupBy(string $identificator): object;
 
     /**
      * ORDER BY identificator

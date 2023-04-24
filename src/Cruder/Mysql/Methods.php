@@ -50,6 +50,18 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
+     * SELECT DISTINCT
+     * 
+     * @param string $table table name
+     * @return object
+     */
+    public function selectDistinct(string $table): object {
+        $this->action = 'selectDistinct';
+        $this->table = $table;
+        return $this;
+    }
+
+    /**
      * Update
      * 
      * @param string $table table name
@@ -138,6 +150,28 @@ class Methods extends CrudHelper implements CrudInterface {
         $this->method_chain .= 'OR ' . $identificator . '? ';
         $this->crud[] = $value;
 
+        return $this;
+    }
+
+    /**
+     * AS (AS operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function as(string $identificator): object {
+        $this->method_chain .= 'AS ' . $identificator . ' ';
+        return $this;
+    }
+
+    /**
+     * GROUP BY identificator
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function groupBy(string $identificator): object {
+        $this->method_chain .= 'GROUP BY ' . $identificator . ' ';
         return $this;
     }
 
@@ -306,6 +340,9 @@ class Methods extends CrudHelper implements CrudInterface {
         }
         if ($this->action == 'delete') {
             return $this->finalData('DELETE FROM ' . $this->table . ' ');
+        }
+        if ($this->action == 'selectDistinct') {
+            return $this->finalData('SELECT DISTINCT ');
         }
         return $this->finalData('SELECT ');
     }
