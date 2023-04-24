@@ -42,7 +42,7 @@ interface CrudInterface {
      * @param string $table table name
      * @return object
      */
-    public function selectDistinct(string $table): object;
+    public function readDistinct(string $table): object;
 
     /**
      * Update

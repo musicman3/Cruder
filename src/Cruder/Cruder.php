@@ -60,8 +60,8 @@ class Cruder implements CrudInterface {
      * @param string $table table name
      * @return object
      */
-    public function selectDistinct(string $table): object {
-        return $this->crud->selectDistinct($table);
+    public function readDistinct(string $table): object {
+        return $this->crud->readDistinct($table);
     }
 
     /**

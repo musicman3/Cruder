@@ -55,8 +55,8 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $table table name
      * @return object
      */
-    public function selectDistinct(string $table): object {
-        $this->action = 'selectDistinct';
+    public function readDistinct(string $table): object {
+        $this->action = 'readDistinct';
         $this->table = $table;
         return $this;
     }
@@ -341,7 +341,7 @@ class Methods extends CrudHelper implements CrudInterface {
         if ($this->action == 'delete') {
             return $this->finalData('DELETE FROM ' . $this->table . ' ');
         }
-        if ($this->action == 'selectDistinct') {
+        if ($this->action == 'readDistinct') {
             return $this->finalData('SELECT DISTINCT ');
         }
         return $this->finalData('SELECT ');
