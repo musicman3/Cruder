@@ -61,11 +61,14 @@ class CrudHelper {
 
         $DbPattern = new DbFunctions();
 
-        preg_match_all('|{(.*)}|isU', $input, $data);
+        preg_match_all('|{{(.*)}}|isU', $input, $data);
 
         $func = [];
         foreach ($data[1] as $value) {
             $explode_data = explode('->', $value);
+            if (!isset($explode_data[1])) {
+                $explode_data[1] = '';
+            }
             $func[] = $DbPattern->pattern($explode_data[0], $explode_data[1]);
         }
 
