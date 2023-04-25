@@ -197,7 +197,7 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function operator(string $operator, string $identificator, mixed $value): object {
-        return $this->crud->limit($operator, $identificator, $value);
+        return $this->crud->operator($operator, $identificator, $value);
     }
 
     /**
