@@ -285,7 +285,7 @@ class Cruder implements CrudInterface {
      * @param string $db_prefix Prefix in the database to be replaced with the one set
      * @return mixed
      */
-    public static function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
+    public function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
         return $this->crud->dbInstall($path, $db_prefix);
     }
 
