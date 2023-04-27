@@ -286,7 +286,7 @@ class Cruder implements CrudInterface {
      * @return mixed
      */
     public static function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
-        return $this->dbInstall($path, $db_prefix);
+        return $this->crud->dbInstall($path, $db_prefix);
     }
 
 }
