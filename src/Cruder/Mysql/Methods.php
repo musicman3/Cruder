@@ -86,6 +86,18 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
+     * Drop
+     * 
+     * @param string $table table name
+     * @return object
+     */
+    public function drop(string $table): object {
+        $this->action = 'drop';
+        $this->table = $table;
+        return $this;
+    }
+
+    /**
      * Set Column
      * 
      * @param string $identificator Column Identificator
@@ -340,6 +352,9 @@ class Methods extends CrudHelper implements CrudInterface {
         }
         if ($this->action == 'delete') {
             return $this->finalData('DELETE FROM ' . $this->table . ' ');
+        }
+        if ($this->action == 'drop') {
+            return $this->finalData('DROP TABLE ' . $this->table . ' ');
         }
         if ($this->action == 'readDistinct') {
             return $this->finalData('SELECT DISTINCT ');

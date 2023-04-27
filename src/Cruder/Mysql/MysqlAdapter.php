@@ -96,7 +96,7 @@ class MysqlAdapter extends Methods {
 
         $separator = ', ';
 
-        if ($this->action == 'create' || $this->action == 'update' || $this->action == 'delete') {
+        if ($this->action == 'create' || $this->action == 'update' || $this->action == 'delete' || $this->action == 'drop') {
             $separator = '=?, ';
         }
 
@@ -121,7 +121,7 @@ class MysqlAdapter extends Methods {
 
         $assistant = $this->assistant($data);
 
-        if ($this->action == 'create' || $this->action == 'update' || $this->action == 'delete') {
+        if ($this->action == 'create' || $this->action == 'update' || $this->action == 'delete' || $this->action == 'drop') {
             return $this->createUpdateDeleteBuilder($assistant);
         }
 

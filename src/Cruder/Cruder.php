@@ -85,6 +85,16 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * Drop
+     * 
+     * @param string $table table name
+     * @return object
+     */
+    public function drop(string $table): object {
+        return $this->crud->drop($table);
+    }
+
+    /**
      * Set Column
      * 
      * @param string $identificator Column Identificator

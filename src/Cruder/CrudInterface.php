@@ -61,6 +61,14 @@ interface CrudInterface {
     public function delete(string $table): object;
 
     /**
+     * Drop
+     * 
+     * @param string $table table name
+     * @return object
+     */
+    public function drop(string $table): object;
+
+    /**
      * Set Column
      * 
      * @param string $identificator Column Identificator
