@@ -26,6 +26,19 @@ class Db {
 
     /**
      * PDO Set
+
+     * EXAMPLE:
+
+      $set = [
+      'db_type' => 'mysql',
+      'db_server' => 'localhost',
+      'db_name' => 'my_db',
+      'db_username' => 'root',
+      'db_password' => 'pass',
+      'db_prefix' => 'emkt_',
+      'db_port' => '3306',
+      'db_family' => 'myisam'
+      ];
      * 
      * @param array $data Settings data
      */
