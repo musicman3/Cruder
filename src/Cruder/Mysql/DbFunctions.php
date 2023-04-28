@@ -66,7 +66,7 @@ class DbFunctions implements DbFunctionsInterface {
             'JSON_ARRAY' => 'JSON_ARRAY(' . $data . ')',
             'JSON_ARRAY_APPEND' => 'JSON_ARRAY_APPEND(' . $data . ')',
             'JSON_ARRAY_INSERT' => 'JSON_ARRAY_INSERT(' . $data . ')',
-            'JSON_OBJECT' => 'JSON_OBJECT(' . $data . ')',
+            'JSON_OBJECT' => 'JSON_OBJECT(' . $data . ')'
         ];
 
         return $functions[$func];
