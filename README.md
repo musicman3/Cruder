@@ -12,13 +12,10 @@ To start using Cruder, you need to initialize database settings. After initializ
 
 ```php
 
-use \Cruder\{
-    Cruder,
-    Pdo
-};
+use \Cruder\Db;
 
 // DB settings
-Pdo::$set = [
+Db::set([
         'db_type' => 'mysql',
         'db_server' => 'localhost',
         'db_name' => 'my_base',
@@ -27,23 +24,25 @@ Pdo::$set = [
         'db_prefix' => 'emkt_',
         'db_port' => '3306',
         'db_family' => 'innodb'
-    ];
+    ]);
 
 // Here we perform various actions that you will need for your project.
-$this->db = new Cruder();
+Db::connect()->read('my_table')
+                ->selectAssoc('id')
+                ->where('order >=', 5)
+                ->orderByDesc('id')
+                ->save();
 
 // Close DB connect
-Pdo::connect('close');
+Db::close();
 
 ```
 There are various methods for working with a database. All of them are documented using PHPDoc and PHPDoc tags according to PSR-5 and PSR-19 standards. A call chain is used when forming a query. Here's an example of what it looks like:
 
 ```php
 
-$this->db = new Cruder();
-
 // Read (SELECT)
-$id = $this->db
+$id = Db::connect()
                 ->read('my_table')
                 ->selectAssoc('id')
                 ->where('order >=', 5)
@@ -51,7 +50,7 @@ $id = $this->db
                 ->save();
 
 // Create (INSERT INTO)
-$this->db
+Db::connect()
          ->create('my_table')
          ->set('id', 10)
          ->set('order', 5)
@@ -59,7 +58,7 @@ $this->db
          ->save();
 
 // Update
-$this->db
+Db::connect()
          ->update('my_table')
          ->set('text', 'This is my new text')
          ->where('id =', 10)
@@ -67,13 +66,13 @@ $this->db
          ->save();
 
 // Delete
-$this->db
+Db::connect()
          ->delete('my_table')
          ->where('id =', 10)
          ->save();
 
 // use DB-functions -> for example YEAR(date_created)
-$data = $this->db
+$data = Db::connect()
                 ->read('my_table')
                 ->selectAssoc('id, name, {{YEAR->date_created}}')
                 ->where('{{YEAR->date_created}} =', '2021-04-21 20:38:40')
@@ -81,10 +80,10 @@ $data = $this->db
                 ->save();
 
 // DB Install
-$this->db->dbInstall('/full_path_to_db_file/db.sql', 'db_prefix');
+Db::connect()->dbInstall('/full_path_to_db_file/db.sql', 'db_prefix');
 
 // DROP TABLE
-$this->db->drop('my_table')->save();
+Db::connect()->drop('my_table')->save();
 
 ```
 Using your own syntax to work with database functions allows you to use multiple types of databases simultaneously. For example, you can use MySQL or Postgres. New functions can always be added through the pattern located in the database adapter section. For MySQL, this pattern is located in `Mysql/DbFunctions->pattern()`.
