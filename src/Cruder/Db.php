@@ -9,7 +9,10 @@ declare(strict_types=1);
 
 namespace Cruder;
 
-use Cruder\Pdo;
+use Cruder\{
+    Pdo,
+    DbFunctions
+};
 
 /**
  * CRUD DB Options
@@ -23,6 +26,7 @@ use Cruder\Pdo;
 class Db {
 
     public static $db = false;
+    public static $db_functions = false;
 
     /**
      * PDO Set
@@ -67,6 +71,21 @@ class Db {
     public static function close(): void {
 
         Pdo::connect('close');
+    }
+
+    /**
+     * DB Functions pattern
+     * 
+     * @param string $func DB Function name
+     * @param string $data DB Function data
+     * @return mixed
+     */
+    public static function functions($func, $data = ''): mixed {
+
+        if (!self::$db_functions) {
+            self::$db_functions = new DbFunctions();
+        }
+        return self::$db_functions->pattern($func, $data);
     }
 
 }
