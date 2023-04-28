@@ -227,7 +227,7 @@ interface CrudInterface {
     /**
      * Install DB-file
      *
-     * @param string $path Path to DB
+     * @param string $path Path to DB file
      * @param string $db_prefix Prefix in the database to be replaced with the one set
      * @return mixed
      */

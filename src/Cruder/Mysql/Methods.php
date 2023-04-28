@@ -365,7 +365,7 @@ class Methods extends CrudHelper implements CrudInterface {
     /**
      * Install DB-file
      *
-     * @param string $path Path to DB
+     * @param string $path Path to DB file
      * @param string $db_prefix Prefix in the database to be replaced with the one set
      * @return mixed
      */
@@ -373,9 +373,7 @@ class Methods extends CrudHelper implements CrudInterface {
 
         $set = Pdo::$set;
 
-        $file_name = $path . $set['db_type'] . '.sql';
-
-        $buffer = str_replace($db_prefix, $set['db_prefix'], implode(file($file_name)));
+        $buffer = str_replace($db_prefix, $set['db_prefix'], implode(file($path)));
 
         if ($set['db_family'] == 'myisam') {
             $buffer = str_ireplace('ENGINE=InnoDB', 'ENGINE=MyISAM', $buffer);

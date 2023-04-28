@@ -81,7 +81,7 @@ $data = $this->db
                 ->save();
 
 // DB Install
-$this->db->dbInstall('/full_path_to_sql_file/', 'db_prefix');
+$this->db->dbInstall('/full_path_to_db_file/db.sql', 'db_prefix');
 
 // DROP TABLE
 $this->db->drop('my_table')->save();
