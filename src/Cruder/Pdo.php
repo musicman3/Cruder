@@ -37,7 +37,8 @@ class Pdo {
       'db_port' => '3306',
       'db_family' => 'myisam',
       'db_charset' => 'utf8mb4',
-      'db_collate' => 'utf8mb4_unicode_ci'
+      'db_collate' => 'utf8mb4_unicode_ci',
+      'db_error_url' => '/my_error_page/?error_message='
       ];
 
      */
@@ -68,8 +69,9 @@ class Pdo {
             try {
                 self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
             } catch (\PDOException $error) {
-                //header('Location: /controller/install/error.php?server_db_error=true&error_message=' . $error->getMessage());
-                return '?server_db_error=true&error_message=' . $error->getMessage();
+                if (isset(self::$set['db_error_url'])) {
+                    header('Location: ' . self::$set['db_error_url'] . $error->getMessage());
+                }
             }
         }
 
