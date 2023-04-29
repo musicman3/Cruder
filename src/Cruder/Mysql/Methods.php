@@ -384,4 +384,17 @@ class Methods extends CrudHelper implements CrudInterface {
         return true;
     }
 
+    /**
+     * PDO exec()
+     *
+     * @param string $data SQL data
+     * @return mixed
+     */
+    public function exec(string $data): mixed {
+
+        Pdo::getExec($data);
+
+        return true;
+    }
+
 }

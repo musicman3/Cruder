@@ -232,4 +232,12 @@ interface CrudInterface {
      * @return mixed
      */
     public function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed;
+
+    /**
+     * PDO exec()
+     *
+     * @param string $data SQL data
+     * @return mixed
+     */
+    public function exec(string $data): mixed;
 }

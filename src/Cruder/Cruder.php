@@ -299,4 +299,14 @@ class Cruder implements CrudInterface {
         return $this->crud->dbInstall($path, $db_prefix);
     }
 
+    /**
+     * PDO exec()
+     *
+     * @param string $data SQL data
+     * @return mixed
+     */
+    public function exec(string $data): mixed {
+        return $this->crud->exec($data);
+    }
+
 }
