@@ -23,7 +23,9 @@ Db::set([
         'db_password' => 'my_password',
         'db_prefix' => 'emkt_',
         'db_port' => '3306',
-        'db_family' => 'innodb'
+        'db_family' => 'innodb',
+        'db_charset' => 'utf8mb4',
+        'db_collate' => 'utf8mb4_unicode_ci'
     ]);
 
 // Here we perform various actions that you will need for your project.

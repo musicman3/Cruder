@@ -35,7 +35,9 @@ class Pdo {
       'db_password' => 'pass',
       'db_prefix' => 'emkt_',
       'db_port' => '3306',
-      'db_family' => 'myisam'
+      'db_family' => 'myisam',
+      'db_charset' => 'utf8mb4',
+      'db_collate' => 'utf8mb4_unicode_ci'
       ];
 
      */
@@ -55,12 +57,18 @@ class Pdo {
             return self::$connect;
         }
 
-        if (self::$connect == null && isset(self::$set['db_type'], self::$set['db_server'], self::$set['db_name'], self::$set['db_username'], self::$set['db_password'])) {
+        $host = ':host=' . self::$set['db_server'] . ';';
+
+        if (isset(self::$set['db_name'])) {
+            $host = ':host=' . self::$set['db_server'] . ';dbname=' . self::$set['db_name'];
+        }
+
+        if (self::$connect == null) {
 
             try {
-                self::$connect = new \PDO(self::$set['db_type'] . ':host=' . self::$set['db_server'] . ';dbname=' . self::$set['db_name'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"]);
+                self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
             } catch (\PDOException $error) {
-                //header('Location: /controller/install/error.php/controller/install/error.php?server_db_error=true&error_message=' . $error->getMessage());
+                //header('Location: /controller/install/error.php?server_db_error=true&error_message=' . $error->getMessage());
                 return '?server_db_error=true&error_message=' . $error->getMessage();
             }
         }
