@@ -25,7 +25,6 @@ use Cruder\{
  */
 class Db {
 
-    public static $db = false;
     public static $db_functions = false;
 
     /**
@@ -57,11 +56,7 @@ class Db {
      * @return object
      */
     public static function connect(): Cruder {
-
-        if (!self::$db) {
-            self::$db = new Cruder();
-        }
-        return self::$db;
+        return new Cruder();
     }
 
     /**
