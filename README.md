@@ -25,7 +25,8 @@ Db::set([
         'db_port' => '3306',
         'db_family' => 'innodb',
         'db_charset' => 'utf8mb4',
-        'db_collate' => 'utf8mb4_unicode_ci'
+        'db_collate' => 'utf8mb4_unicode_ci',
+        'db_error_url' => '/my_error_page/?error_message=' // optional
     ]);
 
 // Here we perform various actions that you will need for your project.
