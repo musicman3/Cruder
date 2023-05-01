@@ -223,12 +223,12 @@ class Methods extends CrudHelper implements CrudInterface {
     /**
      * LIMIT (LIMIT 10, 2 and etc)
      * 
-     * @param string $offset offset value
-     * @param string $limit limit value
+     * @param mixed $offset offset value
+     * @param mixed $limit limit value
      * @return object
      */
-    public function limit(string $offset, ?string $limit = ''): object {
-        if ($offset == '' || $offset == null) {
+    public function limit(mixed $offset, mixed $limit = null): object {
+        if ($limit === '' || $limit === null) {
             $this->method_chain .= 'LIMIT ' . $offset . ' ';
         } else {
             $this->method_chain .= 'LIMIT ' . $offset . ',' . $limit . ' ';
