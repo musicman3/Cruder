@@ -380,10 +380,6 @@ class Methods extends CrudHelper implements CrudInterface {
 
         $buffer = str_replace($db_prefix, $set['db_prefix'], implode(file($path)));
 
-        if ($set['db_family'] == 'myisam') {
-            $buffer = str_ireplace('ENGINE=InnoDB', 'ENGINE=MyISAM', $buffer);
-        }
-
         Pdo::getExec($buffer);
 
         return true;
