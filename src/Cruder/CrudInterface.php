@@ -147,10 +147,11 @@ interface CrudInterface {
     /**
      * LIMIT (LIMIT 10, 2 and etc)
      * 
-     * @param string $limit limit text
+     * @param string $limit limit value
+     * @param string $offset offset value
      * @return object
      */
-    public function limit(string $limit): object;
+    public function limit(string $limit, ?string $offset = ''): object;
 
     /**
      * Any operator

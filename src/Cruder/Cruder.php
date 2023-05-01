@@ -195,11 +195,12 @@ class Cruder implements CrudInterface {
     /**
      * LIMIT (LIMIT 10, 2 and etc)
      * 
-     * @param string $limit limit text
+     * @param string $limit limit value
+     * @param string $offset offset value
      * @return object
      */
-    public function limit(string $limit): object {
-        return $this->crud->limit($limit);
+    public function limit(string $limit, ?string $offset = ''): object {
+        return $this->crud->limit($limit, $offset);
     }
 
     /**
