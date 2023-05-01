@@ -30,6 +30,9 @@ class DbFunctions implements DbFunctionsInterface {
         if (Pdo::$set['db_type'] == 'mysql') {
             $this->db_func = new Mysql\DbFunctions();
         }
+        if (Pdo::$set['db_type'] == 'pgsql') {
+            $this->db_func = new Postgres\DbFunctions();
+        }
     }
 
     /**

@@ -7,36 +7,27 @@
 
 declare(strict_types=1);
 
-namespace Cruder;
+namespace Cruder\Postgres;
 
-use Cruder\Mysql\MysqlAdapter;
-use Cruder\Postgres\PgAdapter;
+use Cruder\{
+    CrudInterface,
+    CrudHelper,
+    Pdo
+};
 
 /**
- * CRUD Query Builder
+ * Mysql Methods
  *
- * @package Cruder 
+ * @package Cruder
  * @author Cruder Team
  * @copyright © 2023 Cruder
  * @license Apache-2.0
  * 
  */
-class Cruder implements CrudInterface {
+class Methods extends CrudHelper implements CrudInterface {
 
-    public $crud;
-
-    /**
-     * Constructor
-     *
-     */
-    function __construct() {
-        if (Pdo::$set['db_type'] == 'mysql') {
-            $this->crud = new MysqlAdapter();
-        }
-        if (Pdo::$set['db_type'] == 'pgsql') {
-            $this->crud = new PgAdapter();
-        }
-    }
+    protected $insert;
+    protected $values;
 
     /**
      * Create
@@ -45,7 +36,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function create(string $table): object {
-        return $this->crud->create($table);
+        $this->action = 'create';
+        $this->table = $table;
+        return $this;
     }
 
     /**
@@ -55,7 +48,8 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function read(string $table): object {
-        return $this->crud->read($table);
+        $this->table = $table;
+        return $this;
     }
 
     /**
@@ -65,7 +59,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function readDistinct(string $table): object {
-        return $this->crud->readDistinct($table);
+        $this->action = 'readDistinct';
+        $this->table = $table;
+        return $this;
     }
 
     /**
@@ -75,7 +71,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function update(string $table): object {
-        return $this->crud->update($table);
+        $this->action = 'update';
+        $this->table = $table;
+        return $this;
     }
 
     /**
@@ -85,7 +83,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function delete(string $table): object {
-        return $this->crud->delete($table);
+        $this->action = 'delete';
+        $this->table = $table;
+        return $this;
     }
 
     /**
@@ -95,7 +95,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function drop(string $table): object {
-        return $this->crud->drop($table);
+        $this->action = 'drop';
+        $this->table = $table;
+        return $this;
     }
 
     /**
@@ -106,7 +108,15 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function set(string $identificator, mixed $value): object {
-        return $this->crud->set($identificator, $value);
+        if ($value === false || $value === '') {
+            $value = null;
+        }
+        $this->set .= $identificator . '=?, ';
+        $this->insert .= $identificator . ', ';
+        $this->values .= '?, ';
+        $this->crud[] = $value;
+
+        return $this;
     }
 
     /**
@@ -117,7 +127,13 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function where(string $identificator, mixed $value): object {
-        return $this->crud->where($identificator, $value);
+        if ($value === false || $value === '') {
+            $value = null;
+        }
+        $this->method_chain .= 'WHERE ' . $identificator . '? ';
+        $this->crud[] = $value;
+
+        return $this;
     }
 
     /**
@@ -128,7 +144,13 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function and(string $identificator, mixed $value): object {
-        return $this->crud->and($identificator, $value);
+        if ($value === false || $value === '') {
+            $value = null;
+        }
+        $this->method_chain .= 'AND ' . $identificator . '? ';
+        $this->crud[] = $value;
+
+        return $this;
     }
 
     /**
@@ -139,7 +161,13 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function or(string $identificator, mixed $value): object {
-        return $this->crud->or($identificator, $value);
+        if ($value === false || $value === '') {
+            $value = null;
+        }
+        $this->method_chain .= 'OR ' . $identificator . '? ';
+        $this->crud[] = $value;
+
+        return $this;
     }
 
     /**
@@ -149,7 +177,8 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function as(string $identificator): object {
-        return $this->crud->as($identificator);
+        $this->method_chain .= 'AS ' . $identificator . ' ';
+        return $this;
     }
 
     /**
@@ -159,7 +188,8 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function groupBy(string $identificator): object {
-        return $this->crud->groupBy($identificator);
+        $this->method_chain .= 'GROUP BY ' . $identificator . ' ';
+        return $this;
     }
 
     /**
@@ -169,7 +199,8 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function orderBy(string $identificator): object {
-        return $this->crud->orderBy($identificator);
+        $this->method_chain .= 'ORDER BY ' . $identificator . ' ';
+        return $this;
     }
 
     /**
@@ -179,17 +210,19 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function orderByDesc(string $identificator): object {
-        return $this->crud->orderByDesc($identificator);
+        $this->method_chain .= 'ORDER BY ' . $identificator . ' DESC ';
+        return $this;
     }
 
     /**
-     * LIMIT
+     * ORDER BY identificator ASC
      * 
      * @param string $identificator identificator
      * @return object
      */
     public function orderByAsc(string $identificator): object {
-        return $this->crud->orderByAsc($identificator);
+        $this->method_chain .= 'ORDER BY ' . $identificator . ' ASC ';
+        return $this;
     }
 
     /**
@@ -199,7 +232,8 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function limit(string $limit): object {
-        return $this->crud->limit($limit);
+        $this->method_chain .= 'LIMIT ' . $limit . ' ';
+        return $this;
     }
 
     /**
@@ -210,8 +244,21 @@ class Cruder implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
-    public function operator(string $operator, string $identificator, mixed $value): object {
-        return $this->crud->operator($operator, $identificator, $value);
+    public function operator(string $operator, string $identificator = '', mixed $value = ''): object {
+        if ($value === false || $value === '') {
+            $value = null;
+        }
+
+        $sign = '? ';
+
+        if ($identificator == '') {
+            $sign = '';
+        }
+
+        $this->method_chain .= $operator . ' ' . $identificator . $sign;
+        $this->crud[] = $value;
+
+        return $this;
     }
 
     /**
@@ -221,7 +268,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function selectAssoc(string $identificator): object {
-        return $this->crud->selectAssoc($identificator);
+        $this->crud[$identificator] = '';
+        $this->action = 'getAssoc';
+        return $this;
     }
 
     /**
@@ -231,7 +280,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function selectIndex(string $identificator): object {
-        return $this->crud->selectIndex($identificator);
+        $this->crud[$identificator] = '';
+        $this->action = 'getIndex';
+        return $this;
     }
 
     /**
@@ -241,7 +292,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function selectValue(string $identificator): object {
-        return $this->crud->selectValue($identificator);
+        $this->crud[$identificator] = '';
+        $this->action = 'getValue';
+        return $this;
     }
 
     /**
@@ -251,7 +304,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function selectObj(string $identificator): object {
-        return $this->crud->selectObj($identificator);
+        $this->crud[$identificator] = '';
+        $this->action = 'getObj';
+        return $this;
     }
 
     /**
@@ -261,7 +316,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function selectColCount(string $identificator): object {
-        return $this->crud->selectColCount($identificator);
+        $this->crud[$identificator] = '';
+        $this->action = 'getColCount';
+        return $this;
     }
 
     /**
@@ -271,7 +328,9 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function selectRowCount(string $identificator): object {
-        return $this->crud->selectRowCount($identificator);
+        $this->crud[$identificator] = '';
+        $this->action = 'getRowCount';
+        return $this;
     }
 
     /**
@@ -280,7 +339,8 @@ class Cruder implements CrudInterface {
      * @return object
      */
     public function lastInsertId(): object {
-        return $this->crud->lastInsertId();
+        $this->action = 'lastInsertId';
+        return $this;
     }
 
     /**
@@ -289,7 +349,22 @@ class Cruder implements CrudInterface {
      * @return mixed
      */
     public function save(): mixed {
-        return $this->crud->save();
+        if ($this->action == 'create') {
+            return $this->finalData('INSERT INTO ' . $this->table . ' (' . rtrim($this->insert, ', ') . ') VALUES (' . rtrim($this->values, ', ') . ') ');
+        }
+        if ($this->action == 'update') {
+            return $this->finalData('UPDATE ' . $this->table . ' SET ' . $this->set);
+        }
+        if ($this->action == 'delete') {
+            return $this->finalData('DELETE FROM ' . $this->table . ' ');
+        }
+        if ($this->action == 'drop') {
+            return $this->finalData('DROP TABLE ' . $this->table . ' ');
+        }
+        if ($this->action == 'readDistinct') {
+            return $this->finalData('SELECT DISTINCT ');
+        }
+        return $this->finalData('SELECT ');
     }
 
     /**
@@ -300,7 +375,18 @@ class Cruder implements CrudInterface {
      * @return mixed
      */
     public function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
-        return $this->crud->dbInstall($path, $db_prefix);
+
+        $set = Pdo::$set;
+
+        $buffer = str_replace($db_prefix, $set['db_prefix'], implode(file($path)));
+
+        if ($set['db_family'] == 'myisam') {
+            $buffer = str_ireplace('ENGINE=InnoDB', 'ENGINE=MyISAM', $buffer);
+        }
+
+        Pdo::getExec($buffer);
+
+        return true;
     }
 
     /**
@@ -310,7 +396,10 @@ class Cruder implements CrudInterface {
      * @return mixed
      */
     public function exec(string $data): mixed {
-        return $this->crud->exec($data);
+
+        Pdo::getExec($data);
+
+        return true;
     }
 
 }

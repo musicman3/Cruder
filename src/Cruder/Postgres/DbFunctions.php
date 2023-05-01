@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Cruder\Mysql;
+namespace Cruder\Postgres;
 
 use Cruder\{
     DbFunctionsInterface
@@ -35,22 +35,22 @@ class DbFunctions implements DbFunctionsInterface {
 
         //$quotes = "'";
         $functions = [
-            'YEAR' => 'YEAR(' . $data . ')',
-            'MONTH' => 'MONTH(' . $data . ')',
-            'DAYOFWEEK' => 'DAYOFWEEK(' . $data . ')',
-            'DAY' => 'DAY(' . $data . ')',
-            'DAYOFYEAR' => 'DAYOFYEAR(' . $data . ')',
-            'QUARTER' => 'QUARTER(' . $data . ')',
-            'HOUR' => 'HOUR(' . $data . ')',
-            'UNIX_TIMESTAMP' => 'UNIX_TIMESTAMP(' . $data . ')',
-            'LIKE' => 'LIKE ',
+            'YEAR' => 'EXTRACT(YEAR FROM ' . $data . ')',
+            'MONTH' => 'EXTRACT(MONTH FROM ' . $data . ')',
+            'DAYOFWEEK' => 'EXTRACT(DOW FROM ' . $data . ')',
+            'DAY' => 'EXTRACT(DAY FROM ' . $data . ')',
+            'DAYOFYEAR' => 'EXTRACT(DOY FROM ' . $data . ')',
+            'QUARTER' => 'EXTRACT(QUARTER FROM ' . $data . ')',
+            'HOUR' => 'EXTRACT(HOUR FROM ' . $data . ')',
+            'UNIX_TIMESTAMP' => 'EXTRACT(EPOCH FROM ' . $data . ')',
+            'LIKE' => 'ILIKE ',
             'CAST AS CHAR' => 'CAST(' . $data . ' AS CHAR)',
             'TIMESTAMP' => 'TIMESTAMP(' . $data . ')',
             'TIME' => 'TIME(' . $data . ')',
             'DEFAULT' => 'DEFAULT(' . $data . ')',
             'MIN' => 'MIN(' . $data . ')',
             'MAX' => 'MAX(' . $data . ')',
-            'RLIKE' => 'RLIKE ',
+            'RLIKE' => 'SIMILAR TO ',
             'IN' => 'IN(' . $data . ')',
             'NOT' => 'NOT',
             'BETWEEN' => 'BETWEEN',
