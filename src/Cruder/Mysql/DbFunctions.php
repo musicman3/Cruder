@@ -44,30 +44,7 @@ class DbFunctions implements DbFunctionsInterface {
             'HOUR' => 'HOUR(' . $data . ')',
             'UNIX_TIMESTAMP' => 'UNIX_TIMESTAMP(' . $data . ')',
             'LIKE' => 'LIKE ',
-            'CAST AS CHAR' => 'CAST(' . $data . ' AS CHAR)',
-            'TIMESTAMP' => 'TIMESTAMP(' . $data . ')',
-            'TIME' => 'TIME(' . $data . ')',
-            'DEFAULT' => 'DEFAULT(' . $data . ')',
-            'MIN' => 'MIN(' . $data . ')',
-            'MAX' => 'MAX(' . $data . ')',
-            'RLIKE' => 'RLIKE ',
-            'IN' => 'IN(' . $data . ')',
-            'NOT' => 'NOT',
-            'BETWEEN' => 'BETWEEN',
-            'REGEXP' => 'REGEXP',
-            'IS NULL' => 'IS NULL',
-            'IS NOT NULL' => 'IS NOT NULL',
-            'VERSION' => 'VERSION(' . $data . ')',
-            'LAST_INSERT_ID' => 'LAST_INSERT_ID(' . $data . ')',
-            'JSON_SEARCH' => 'JSON_SEARCH(' . $data . ')',
-            'JSON_SET' => 'JSON_SET(' . $data . ')',
-            'JSON_REPLACE' => 'JSON_REPLACE(' . $data . ')',
-            'JSON_REMOVE' => 'JSON_REMOVE(' . $data . ')',
-            'JSON_EXTRACT' => 'JSON_EXTRACT(' . $data . ')',
-            'JSON_ARRAY' => 'JSON_ARRAY(' . $data . ')',
-            'JSON_ARRAY_APPEND' => 'JSON_ARRAY_APPEND(' . $data . ')',
-            'JSON_ARRAY_INSERT' => 'JSON_ARRAY_INSERT(' . $data . ')',
-            'JSON_OBJECT' => 'JSON_OBJECT(' . $data . ')'
+            'CAST AS CHAR' => 'CAST(' . $data . ' AS CHAR)'
         ];
 
         return $functions[$func];

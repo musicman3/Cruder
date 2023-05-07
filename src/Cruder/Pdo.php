@@ -67,7 +67,12 @@ class Pdo {
         if (self::$connect == null) {
 
             try {
-                self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
+                if (self::$set['db_type'] == 'mysql') {
+                    self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
+                }
+                if (self::$set['db_type'] == 'pgsql') {
+                    self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
+                }
             } catch (\PDOException $error) {
                 if (isset(self::$set['db_error_url'])) {
                     header('Location: ' . self::$set['db_error_url'] . $error->getMessage());
