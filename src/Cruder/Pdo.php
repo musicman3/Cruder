@@ -38,7 +38,8 @@ class Pdo {
       'db_family' => 'myisam',
       'db_charset' => 'utf8mb4',
       'db_collate' => 'utf8mb4_unicode_ci',
-      'db_error_url' => '/my_error_page/?error_message='
+      'db_error_url' => '/my_error_page/?error_message=',
+      'db_path' => '/my_db_path/sqlite.db'
       ];
 
      */
@@ -72,6 +73,9 @@ class Pdo {
                 }
                 if (self::$set['db_type'] == 'pgsql') {
                     self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
+                }
+                if (self::$set['db_type'] == 'sqlite') {
+                    self::$connect = new \PDO(self::$set['db_type'] . ':' . self::$set['db_path'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
                 }
             } catch (\PDOException $error) {
                 if (isset(self::$set['db_error_url'])) {

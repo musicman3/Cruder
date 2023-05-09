@@ -44,7 +44,9 @@ class DbFunctions implements DbFunctionsInterface {
             'HOUR' => 'HOUR(' . $data . ')',
             'UNIX_TIMESTAMP' => 'UNIX_TIMESTAMP(' . $data . ')',
             'LIKE' => 'LIKE ',
-            'CAST AS CHAR' => 'CAST(' . $data . ' AS CHAR)'
+            'CAST AS CHAR' => 'CAST(' . $data . ' AS CHAR)',
+            'MIN' => 'MIN(' . $data . ')',
+            'MAX' => 'MAX(' . $data . ')',
         ];
 
         return $functions[$func];

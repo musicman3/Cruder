@@ -112,7 +112,7 @@ class CrudHelper {
         }
 
         if (!is_array($data)) {
-            return str_ireplace($find, $replace, $data);
+            return str_ireplace($find, $replace, (string) $data);
         }
 
         $output = [];

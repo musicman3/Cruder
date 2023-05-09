@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Cruder\Postgres;
+namespace Cruder\Sqlite;
 
 use Cruder\{
     DbFunctionsInterface
@@ -35,15 +35,15 @@ class DbFunctions implements DbFunctionsInterface {
 
         //$quotes = "'";
         $functions = [
-            'YEAR' => 'EXTRACT(YEAR FROM ' . $data . ')',
-            'MONTH' => 'EXTRACT(MONTH FROM ' . $data . ')',
-            'DAYOFWEEK' => 'EXTRACT(DOW FROM ' . $data . ')',
-            'DAY' => 'EXTRACT(DAY FROM ' . $data . ')',
-            'DAYOFYEAR' => 'EXTRACT(DOY FROM ' . $data . ')',
-            'QUARTER' => 'EXTRACT(QUARTER FROM ' . $data . ')',
-            'HOUR' => 'EXTRACT(HOUR FROM ' . $data . ')',
-            'UNIX_TIMESTAMP' => 'EXTRACT(EPOCH FROM ' . $data . ')',
-            'LIKE' => 'ILIKE ',
+            'YEAR' => 'strftime("%Y",' . $data . ')',
+            'MONTH' => 'strftime("%m",' . $data . ')',
+            'DAYOFWEEK' => 'strftime("%w",' . $data . ')',
+            'DAY' => 'strftime("%d",' . $data . ')',
+            'DAYOFYEAR' => 'strftime("%j",' . $data . ')',
+            'QUARTER' => '(strftime("%m",' . $data . ') + 2) / 3 AS QUARTER',
+            'HOUR' => 'strftime("%H",' . $data . ')',
+            'UNIX_TIMESTAMP' => 'unixepoch(' . $data . ')',
+            'LIKE' => 'LIKE ',
             'CAST AS CHAR' => 'CAST(' . $data . ' AS CHAR)',
             'MIN' => 'MIN(' . $data . ')',
             'MAX' => 'MAX(' . $data . ')',

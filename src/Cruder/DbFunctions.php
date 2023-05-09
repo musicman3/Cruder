@@ -33,6 +33,9 @@ class DbFunctions implements DbFunctionsInterface {
         if (Pdo::$set['db_type'] == 'pgsql') {
             $this->db_func = new Postgres\DbFunctions();
         }
+        if (Pdo::$set['db_type'] == 'sqlite') {
+            $this->db_func = new Sqlite\DbFunctions();
+        }
     }
 
     /**
