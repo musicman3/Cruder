@@ -2,6 +2,17 @@
 
 Project installation: `composer require musicman3/cruder`
 
+### System requirements: 
+  - OS Unix, Linux or Windows
+  - Apache Web Server >= 2.4 or Nginx >= 1.17
+  - PHP >= 8.2
+  - MySQL || MariaDB || PostgreSQL || SQLite
+
+### PHP extensions and settings: 
+  - pdo_mysql (for MySQL or MariaDB)
+  - pdo_pgsql (for PostgreSQL)
+  - pdo_sqlite (for SQLite)
+
 The Cruder Project is a CRUD system for working with databases based on the Query Builder principle and using PDO. This project is primarily developed for the eMarket project: https://github.com/musicman3/eMarket
 
 At the same time, the library is extracted into a separate project to allow anyone who likes Cruder to use it in their own projects.
