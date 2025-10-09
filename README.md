@@ -27,14 +27,14 @@ use \Cruder\Db;
 
 // DB settings
 Db::set([
-        'db_type' => 'mysql',
+        'db_type' => 'mysql', // pgsql, sqlite
         'db_server' => 'localhost',
         'db_name' => 'my_base',
         'db_username' => 'root',
         'db_password' => 'my_password',
         'db_prefix' => 'emkt_',
         'db_port' => '3306',
-        'db_family' => 'innodb',
+        'db_family' => 'innodb', // myisam
         'db_charset' => 'utf8mb4',
         'db_collate' => 'utf8mb4_unicode_ci',
         'db_error_url' => '/my_error_page/?error_message=' // optional
@@ -55,14 +55,6 @@ There are various methods for working with a database. All of them are documente
 
 ```php
 
-// Read (SELECT)
-$id = Db::connect()
-                ->read('my_table')
-                ->selectAssoc('id')
-                ->where('order >=', 5)
-                ->orderByDesc('id')
-                ->save();
-
 // Create (INSERT INTO)
 Db::connect()
          ->create('my_table')
@@ -70,6 +62,14 @@ Db::connect()
          ->set('order', 5)
          ->set('text', 'This is my text')
          ->save();
+
+// Read (SELECT)
+$id = Db::connect()
+                ->read('my_table')
+                ->selectAssoc('id')
+                ->where('order >=', 5)
+                ->orderByDesc('id')
+                ->save();
 
 // Update
 Db::connect()
@@ -100,6 +100,76 @@ Db::connect()->dbInstall('/full_path_to_db_file/db.sql', 'db_prefix');
 Db::connect()->drop('my_table')->save();
 
 ```
+If you need to connect to another database, you must specify its settings and then return the previous settings after you have finished working with this database.
+
+```php
+use \Cruder\Db;
+
+// DB settings
+Db::set([
+        'db_type' => 'mysql', // pgsql, sqlite
+        'db_server' => 'localhost',
+        'db_name' => 'my_base',
+        'db_username' => 'root',
+        'db_password' => 'my_password',
+        'db_prefix' => 'emkt_',
+        'db_port' => '3306',
+        'db_family' => 'innodb', // myisam
+        'db_charset' => 'utf8mb4',
+        'db_collate' => 'utf8mb4_unicode_ci',
+        'db_error_url' => '/my_error_page/?error_message=' // optional
+    ]);
+
+// We execute queries to the master database
+
+Db::connect()
+         ->create('my_table')
+         ->set('id', 10)
+         ->set('order', 5)
+         ->set('text', 'This is my text')
+         ->save();
+
+$masterDB = Db::set; // Save master settings
+
+// Creating settings for a new database (SQLite)
+
+$slaveDB = [
+        'db_type' => 'sqlite',
+        'db_name' => 'my_base',
+        'db_username' => 'root',
+        'db_password' => 'my_password',
+        'db_prefix' => 'emkt_',
+        'db_path' => 'localhost/storage/databases/sqlite.db3'
+    ];
+
+//Save settings
+Db::set($slaveDB);
+
+//We execute queries to the slave database
+
+Db::connect()
+         ->create('my_table')
+         ->set('id', 10)
+         ->set('order', 5)
+         ->set('text', 'This is my text')
+         ->save();
+
+//Returning to master settings
+Db::set($masterDB);
+
+// We execute queries to the master database
+$id = Db::connect()
+                ->read('my_table')
+                ->selectAssoc('id')
+                ->where('order >=', 5)
+                ->orderByDesc('id')
+                ->save();
+
+// Close DB connect
+Db::close();
+
+```
+
 Using your own syntax to work with database functions allows you to use multiple types of databases simultaneously. For example, you can use MySQL or Postgres. New functions can always be added through the pattern located in the database adapter section. For MySQL, this pattern is located in `Mysql/DbFunctions->pattern()`.
 
 All available methods can be viewed in the files CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
