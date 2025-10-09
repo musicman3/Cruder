@@ -100,7 +100,7 @@ Db::connect()->dbInstall('/full_path_to_db_file/db.sql', 'db_prefix');
 Db::connect()->drop('my_table')->save();
 
 ```
-If you need to connect to another database, you must specify its settings and then return the previous settings after you have finished working with this database.
+If you need to connect to another database, you must specify its settings and then return the previous settings after you have finished working with this database. This allows one project to use unlimited connections to different databases located on different servers.
 
 ```php
 use \Cruder\Db;
