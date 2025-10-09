@@ -170,6 +170,21 @@ Db::close();
 
 ```
 
+List of available functions for databases used in SQL queries (basic functionality is the same as in MySQL):
+
+```
+YEAR, MONTH, DAYOFWEEK, DAY, DAYOFYEAR, QUARTER, HOUR, UNIX_TIMESTAMP, LIKE, CAST AS CHAR, MIN, MAX
+```
+Example
+```php
+$data = Db::connect()
+                ->read('my_table')
+                ->selectAssoc('id, name, {{YEAR->date_created}}')
+                ->where('{{YEAR->date_created}} =', '2021-04-21 20:38:40')
+                ->orderByDesc('id')
+                ->save();
+```
+
 Using your own syntax to work with database functions allows you to use multiple types of databases simultaneously. For example, you can use MySQL or Postgres. New functions can always be added through the pattern located in the database adapter section. For MySQL, this pattern is located in `Mysql/DbFunctions->pattern()`.
 
 All available methods can be viewed in the files CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
