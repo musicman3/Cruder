@@ -197,7 +197,7 @@ delete(string $table) - analog DELETE FROM
 readDistinct(string $table) - analog SELECT DISTINCT
 drop(string $table) - analog DROP TABLE
 ---------------------------------------
-set(string $identificator, mixed $value) - Set Column
+set(string $identificator, mixed $value) - SET Column
 where(string $identificator, mixed $value) - WHERE operator
 and(string $identificator, mixed $value) - AND operator
 or(string $identificator, mixed $value) - OR operator
