@@ -189,6 +189,42 @@ Using your own syntax to work with database functions allows you to use multiple
 
 All available methods can be viewed in the files CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
 
+```
+create(string $table) - analog INSERT INTO
+read(string $table) - analog SELECT
+update(string $table - analog UPDATE
+delete(string $table) - analog DELETE FROM
+readDistinct(string $table) - analog SELECT DISTINCT
+drop(string $table) - analog DROP TABLE
+---------------------------------------
+set(string $identificator, mixed $value) - Set Column
+where(string $identificator, mixed $value) - WHERE operator
+and(string $identificator, mixed $value) - AND operator
+or(string $identificator, mixed $value) - OR operator
+as(string $identificator) - AS operator
+---------------------------------------
+groupBy(string $identificator) - analog GROUP BY
+orderBy(string $identificator) - analog ORDER BY
+orderByDesc(string $identificator) - analog ORDER BY identificator DESC
+orderByAsc(string $identificator) - analog ORDER BY identificator ASC
+limit(mixed $offset, mixed $limit) - analog LIMIT (a,b)
+operator(string $operator, string $identificator, mixed $value) - Any other operator that you can specify yourself
+----------------------------------------
+selectAssoc(string $identificator) - Get associated array
+selectIndex(string $identificator) - Get an indexed array
+selectValue(string $identificator) - Get value
+selectObj(string $identificator) - Get object
+selectColCount(string $identificator) - Count the number of columns
+selectRowCount(string $identificator) - Count the number of rows
+lastInsertId() - Last Insert ID
+----------------------------------------
+save() - Query Termination Operator. Terminates a query chain.
+----------------------------------------
+dbInstall(string $path, string $db_prefix = 'emkt_') - Install DB-file
+exec(string $data) - PDO exec() operator
+
+```
+
 ### PHP Standards Recommendations Used: 
   - PSR-1 (Basic Coding Standard)
   - PSR-4 (Autoloading Standard)
