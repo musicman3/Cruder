@@ -105,22 +105,33 @@ If you need to connect to another database, you must specify its settings and th
 ```php
 use \Cruder\Db;
 
-//---------------------------------------------------------- MySQL
-
-// DB settings
-Db::set([
-        'db_type' => 'mysql', // pgsql, sqlite
+$mysqlDB = [
+        'db_type' => 'mysql',
         'db_server' => 'localhost',
         'db_name' => 'my_base',
         'db_username' => 'root',
         'db_password' => 'my_password',
         'db_prefix' => 'emkt_',
         'db_port' => '3306',
-        'db_family' => 'innodb', // myisam
+        'db_family' => 'innodb',
         'db_charset' => 'utf8mb4',
         'db_collate' => 'utf8mb4_unicode_ci',
         'db_error_url' => '/my_error_page/?error_message=' // optional
-    ]);
+    ];
+
+$sqliteDB = [
+        'db_type' => 'sqlite',
+        'db_name' => 'my_base',
+        'db_username' => 'root',
+        'db_password' => 'my_password',
+        'db_prefix' => 'emkt_',
+        'db_path' => 'localhost/storage/databases/sqlite.db3'
+    ];
+
+//---------------------------------------------------------- MySQL
+
+// MySQL DB settings
+Db::set($mysqlDB);
 
 // We execute queries to the master database
 Db::connect()
@@ -135,21 +146,8 @@ Db::close();
 
 //---------------------------------------------------------- SQLite
 
-// Save master settings
-$masterDB = Db::set;
-
-// Creating settings for a new database (SQLite)
-$slaveDB = [
-        'db_type' => 'sqlite',
-        'db_name' => 'my_base',
-        'db_username' => 'root',
-        'db_password' => 'my_password',
-        'db_prefix' => 'emkt_',
-        'db_path' => 'localhost/storage/databases/sqlite.db3'
-    ];
-
-//Save settings
-Db::set($slaveDB);
+// SQLite DB settings
+Db::set($sqliteDB);
 
 //We execute queries to the slave database
 Db::connect()
@@ -164,8 +162,8 @@ Db::close();
 
 //---------------------------------------------------------- MySQL
 
-//Returning to master settings
-Db::set($masterDB);
+// MySQL DB settings
+Db::set($mysqlDB);
 
 // We execute queries to the master database
 $id = Db::connect()
