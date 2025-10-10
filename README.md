@@ -121,7 +121,6 @@ Db::set([
     ]);
 
 // We execute queries to the master database
-
 Db::connect()
          ->create('my_table')
          ->set('id', 10)
@@ -135,7 +134,6 @@ Db::close();
 $masterDB = Db::set; // Save master settings
 
 // Creating settings for a new database (SQLite)
-
 $slaveDB = [
         'db_type' => 'sqlite',
         'db_name' => 'my_base',
@@ -149,7 +147,6 @@ $slaveDB = [
 Db::set($slaveDB);
 
 //We execute queries to the slave database
-
 Db::connect()
          ->create('my_table')
          ->set('id', 10)
