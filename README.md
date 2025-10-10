@@ -200,7 +200,7 @@ All available methods can be viewed in the files CrudInterface.php or by viewing
 ```php
 create(string $table) - analog INSERT INTO
 read(string $table) - analog SELECT
-update(string $table - analog UPDATE
+update(string $table) - analog UPDATE
 delete(string $table) - analog DELETE FROM
 readDistinct(string $table) - analog SELECT DISTINCT
 drop(string $table) - analog DROP TABLE
