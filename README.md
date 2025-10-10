@@ -129,6 +129,9 @@ Db::connect()
          ->set('text', 'This is my text')
          ->save();
 
+// Close DB connect
+Db::close();
+
 $masterDB = Db::set; // Save master settings
 
 // Creating settings for a new database (SQLite)
@@ -153,6 +156,9 @@ Db::connect()
          ->set('order', 5)
          ->set('text', 'This is my text')
          ->save();
+
+// Close DB connect
+Db::close();
 
 //Returning to master settings
 Db::set($masterDB);
