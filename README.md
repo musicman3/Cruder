@@ -208,7 +208,9 @@ orderBy(string $identificator) - analog ORDER BY
 orderByDesc(string $identificator) - analog ORDER BY identificator DESC
 orderByAsc(string $identificator) - analog ORDER BY identificator ASC
 limit(mixed $offset, mixed $limit) - analog LIMIT (a,b)
-operator(string $operator, string $identificator, mixed $value) - Any other operator that you can specify yourself
+----------------------------------------
+Any other operator that you can specify yourself
+operator(string $operator, string $identificator, mixed $value)
 ----------------------------------------
 selectAssoc(string $identificator) - Get associated array
 selectIndex(string $identificator) - Get an indexed array
