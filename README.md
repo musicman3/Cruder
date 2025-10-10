@@ -105,6 +105,8 @@ If you need to connect to another database, you must specify its settings and th
 ```php
 use \Cruder\Db;
 
+//---------------------------------------------------------- MySQL
+
 // DB settings
 Db::set([
         'db_type' => 'mysql', // pgsql, sqlite
@@ -131,7 +133,10 @@ Db::connect()
 // Close DB connect
 Db::close();
 
-$masterDB = Db::set; // Save master settings
+//---------------------------------------------------------- SQLite
+
+// Save master settings
+$masterDB = Db::set;
 
 // Creating settings for a new database (SQLite)
 $slaveDB = [
@@ -156,6 +161,8 @@ Db::connect()
 
 // Close DB connect
 Db::close();
+
+//---------------------------------------------------------- MySQL
 
 //Returning to master settings
 Db::set($masterDB);
