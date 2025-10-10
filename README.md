@@ -189,7 +189,7 @@ Using your own syntax to work with database functions allows you to use multiple
 
 All available methods can be viewed in the files CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
 
-```
+```php
 create(string $table) - analog INSERT INTO
 read(string $table) - analog SELECT
 update(string $table - analog UPDATE
