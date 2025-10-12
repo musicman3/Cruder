@@ -147,6 +147,16 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * INNER JOIN (INNER JOIN operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function innerJoin(string $identificator): object {
+        return $this->crud->leftJoin($identificator);
+    }
+
+    /**
      * LEFT JOIN (LEFT JOIN operator)
      * 
      * @param string $identificator identificator

@@ -105,6 +105,14 @@ interface CrudInterface {
     public function or(string $identificator, mixed $value): object;
 
     /**
+     * INNER JOIN (INNER JOIN operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function innerJoin(string $identificator): object;
+
+    /**
      * LEFT JOIN (LEFT JOIN operator)
      * 
      * @param string $identificator identificator

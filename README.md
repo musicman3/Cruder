@@ -225,6 +225,7 @@ set(string $identificator, mixed $value) - SET operator
 where(string $identificator, mixed $value) - WHERE operator
 and(string $identificator, mixed $value) - AND operator
 or(string $identificator, mixed $value) - OR operator
+innerJoin(string $identificator) - INNER JOIN
 leftJoin(string $identificator) - LEFT JOIN operator
 on(string $identificator, mixed $value) - ON operator
 using(string $identificator) - USING operator

@@ -171,6 +171,17 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
+     * INNER JOIN identificator
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function innerJoin(string $identificator): object {
+        $this->method_chain .= 'INNER JOIN ' . $identificator . ' ';
+        return $this;
+    }
+
+    /**
      * LEFT JOIN identificator
      * 
      * @param string $identificator identificator
