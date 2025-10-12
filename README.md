@@ -190,7 +190,7 @@ Db::close();
 ```
 
 Get current Cruder settings:
-```
+```php
 Db::get()
 ```
 
@@ -221,7 +221,7 @@ delete(string $table) - analog DELETE FROM
 readDistinct(string $table) - analog SELECT DISTINCT
 drop(string $table) - analog DROP TABLE
 ---------------------------------------
-set(string $identificator, mixed $value) - SET Column
+set(string $identificator, mixed $value) - SET operator
 where(string $identificator, mixed $value) - WHERE operator
 and(string $identificator, mixed $value) - AND operator
 or(string $identificator, mixed $value) - OR operator
