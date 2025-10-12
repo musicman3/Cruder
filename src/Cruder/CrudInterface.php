@@ -122,6 +122,14 @@ interface CrudInterface {
     public function on(string $identificator, mixed $value): object;
 
     /**
+     * USING (USING operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function using(string $identificator): object;
+
+    /**
      * AS (AS operator)
      * 
      * @param string $identificator identificator

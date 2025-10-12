@@ -193,6 +193,17 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
+     * USING operator
+     * 
+     * @param string $identificator USING identificator
+     * @return object
+     */
+    public function using(string $identificator): object {
+        $this->method_chain .= 'USING (' . $identificator . ')';
+        return $this;
+    }
+
+    /**
      * AS (AS operator)
      * 
      * @param string $identificator identificator

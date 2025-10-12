@@ -168,6 +168,16 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * USING (USING operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function using(string $identificator): object {
+        return $this->crud->using($identificator);
+    }
+
+    /**
      * AS (AS operator)
      * 
      * @param string $identificator identificator
