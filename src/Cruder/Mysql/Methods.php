@@ -166,6 +166,33 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
+     * LEFT JOIN identificator
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function leftJoin(string $identificator): object {
+        $this->method_chain .= 'LEFT JOIN ' . $identificator . ' ';
+        return $this;
+    }
+
+    /**
+     * ON operator
+     * 
+     * @param string $identificator ON identificator
+     * @param mixed $value Identificator Value
+     * @return object
+     */
+    public function on(string $identificator, mixed $value): object {
+        if ($value === false || $value === '') {
+            $value = null;
+        }
+        $this->method_chain .= 'ON (' . $identificator . $value . ')';
+
+        return $this;
+    }
+
+    /**
      * AS (AS operator)
      * 
      * @param string $identificator identificator
@@ -240,7 +267,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * Any operator
      * 
      * @param string $operator Any operator
-     * @param string $identificator OR identificator
+     * @param string $identificator Any identificator
      * @param mixed $value Identificator Value
      * @return object
      */
@@ -401,5 +428,4 @@ class Methods extends CrudHelper implements CrudInterface {
 
         return true;
     }
-
 }

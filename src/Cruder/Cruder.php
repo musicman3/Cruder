@@ -147,6 +147,27 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * LEFT JOIN (LEFT JOIN operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function leftJoin(string $identificator): object {
+        return $this->crud->leftJoin($identificator);
+    }
+
+    /**
+     * ON operator
+     * 
+     * @param string $identificator ON identificator
+     * @param mixed $value Identificator Value
+     * @return object
+     */
+    public function on(string $identificator, mixed $value): object {
+        return $this->crud->on($identificator, $value);
+    }
+
+    /**
      * AS (AS operator)
      * 
      * @param string $identificator identificator
@@ -211,7 +232,7 @@ class Cruder implements CrudInterface {
      * Any operator
      * 
      * @param string $operator Any operator
-     * @param string $identificator OR identificator
+     * @param string $identificator Any identificator
      * @param mixed $value Identificator Value
      * @return object
      */
@@ -317,5 +338,4 @@ class Cruder implements CrudInterface {
     public function exec(string $data): mixed {
         return $this->crud->exec($data);
     }
-
 }

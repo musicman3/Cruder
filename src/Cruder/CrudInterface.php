@@ -105,6 +105,23 @@ interface CrudInterface {
     public function or(string $identificator, mixed $value): object;
 
     /**
+     * LEFT JOIN (LEFT JOIN operator)
+     * 
+     * @param string $identificator identificator
+     * @return object
+     */
+    public function leftJoin(string $identificator): object;
+
+    /**
+     * ON operator
+     * 
+     * @param string $identificator ON identificator
+     * @param mixed $value Identificator Value
+     * @return object
+     */
+    public function on(string $identificator, mixed $value): object;
+
+    /**
      * AS (AS operator)
      * 
      * @param string $identificator identificator
@@ -157,7 +174,7 @@ interface CrudInterface {
      * Any operator
      * 
      * @param string $operator Any operator
-     * @param string $identificator OR identificator
+     * @param string $identificator Any identificator
      * @param mixed $value Identificator Value
      * @return object
      */
