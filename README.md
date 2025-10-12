@@ -73,6 +73,15 @@ $id = Db::connect()
                 ->orderByDesc('id')
                 ->save();
 
+// Read with use LEFT JOIN
+$data = Db::connect()
+                ->read('customers')
+                ->selectAssoc('customers.customer_id, customers.first_name, orders.amount')
+                ->leftJoin('orders')
+                ->on('customers.customer_id =', 'orders.customer')
+                ->where('orders.amount >=', '500')
+                ->save();
+
 // Update
 Db::connect()
          ->update('my_table')
@@ -216,6 +225,8 @@ set(string $identificator, mixed $value) - SET Column
 where(string $identificator, mixed $value) - WHERE operator
 and(string $identificator, mixed $value) - AND operator
 or(string $identificator, mixed $value) - OR operator
+leftJoin(string $identificator) - LEFT JOIN operator
+on(string $identificator, mixed $value) - ON operator
 as(string $identificator) - AS operator
 ---------------------------------------
 groupBy(string $identificator) - analog GROUP BY
