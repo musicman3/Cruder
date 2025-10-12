@@ -51,6 +51,16 @@ class Db {
     }
 
     /**
+     * PDO Get
+     * 
+     * @return array|null
+     */
+    public static function get(): array|null {
+
+        return Pdo::$set;
+    }
+
+    /**
      * DB Connect
      * 
      * @return object
@@ -82,5 +92,4 @@ class Db {
         }
         return self::$db_functions->pattern($func, $data);
     }
-
 }
