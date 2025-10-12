@@ -227,6 +227,7 @@ and(string $identificator, mixed $value) - AND operator
 or(string $identificator, mixed $value) - OR operator
 leftJoin(string $identificator) - LEFT JOIN operator
 on(string $identificator, mixed $value) - ON operator
+using(string $identificator) - USING operator
 as(string $identificator) - AS operator
 ---------------------------------------
 groupBy(string $identificator) - analog GROUP BY
