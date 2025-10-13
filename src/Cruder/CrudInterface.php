@@ -259,6 +259,13 @@ interface CrudInterface {
     public function save(): mixed;
 
     /**
+     * Debug
+     * 
+     * @return mixed
+     */
+    public function debug(): mixed;
+
+    /**
      * Install DB-file
      *
      * @param string $path Path to DB file

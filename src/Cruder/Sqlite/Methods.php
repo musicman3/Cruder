@@ -422,6 +422,16 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
+     * Debug
+     * 
+     * @return mixed
+     */
+    public function debug(): mixed {
+        $this->debug = 'true';
+        return $this->save();
+    }
+
+    /**
      * Install DB-file
      *
      * @param string $path Path to DB file

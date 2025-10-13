@@ -339,6 +339,15 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * Debug
+     * 
+     * @return mixed
+     */
+    public function debug(): mixed {
+        return $this->crud->debug();
+    }
+
+    /**
      * Install DB-file
      *
      * @param string $path Path to DB file

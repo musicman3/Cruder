@@ -29,6 +29,7 @@ class SqliteAdapter extends Methods {
     protected $set = '';
     protected $method_chain = '';
     protected $action = FALSE;
+    protected $debug = FALSE;
 
     /**
      * Create, Update and Delete Builder (INSERT INTO, UPDATE, DELETE FROM)
@@ -135,11 +136,11 @@ class SqliteAdapter extends Methods {
     protected function reset(): void {
         $this->table = false;
         $this->crud = [];
+        $this->debugFormatLine($this->debug, $this->request);
         $this->request = '';
         $this->output = [];
         $this->set = '';
         $this->method_chain = '';
         $this->action = FALSE;
     }
-
 }

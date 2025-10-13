@@ -122,4 +122,18 @@ class CrudHelper {
         return $output;
     }
 
+    /**
+     * Debug formating line
+     * 
+     * @param string|bool $debug bebug marker
+     * @param string $input Input SQL string
+     */
+    public function debugFormatLine(string|bool $debug, string $input): void {
+        if ($debug) {
+            echo '<pre style="color: green">';
+            print_r('<b style="color: red">CRUDER DEBUG:</b><br>');
+            print_r($input);
+            echo '</pre>';
+        }
+    }
 }
