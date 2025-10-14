@@ -206,7 +206,7 @@ Db::get()
 A list of available database functions used in SQL queries (the basic functionality is identical to their MySQL counterparts). These functions operate identically across all supported databases, allowing you to perform specific actions within the SQL query. This reduces the burden on subsequent PHP processing in your project.
 
 ```
-YEAR, MONTH, DAYOFWEEK, DAY, DAYOFYEAR, QUARTER, HOUR, UNIX_TIMESTAMP, LIKE, CAST AS CHAR, MIN, MAX
+YEAR, MONTH, DAYOFWEEK, DAY, DAYOFYEAR, QUARTER, HOUR, UNIX_TIMESTAMP, LIKE, CAST AS CHAR, MIN, MAX, COUNT
 ```
 Example
 ```php

@@ -47,6 +47,7 @@ class DbFunctions implements DbFunctionsInterface {
             'CAST AS CHAR' => 'CAST(' . $data . ' AS CHAR)',
             'MIN' => 'MIN(' . $data . ')',
             'MAX' => 'MAX(' . $data . ')',
+            'COUNT' => 'COUNT(' . $data . ')',
         ];
 
         return $functions[$func];
