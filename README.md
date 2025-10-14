@@ -220,10 +220,10 @@ MIN - similar to the MIN(value) function in MySQL
 MAX - similar to the MAX(value) function in MySQL
 COUNT - similar to the COUNT(column) function in MySQL
 
-----------------------------------------------------------------------
-These functions are identical for MySQL, Postgree and SQLite, 
+-----------------------------------------------------------------------
+These functions in Cruder are identical for MySQL, Postgree and SQLite, 
 so when changing the database on the fly, the result remains the same.
-----------------------------------------------------------------------
+-----------------------------------------------------------------------
 
 Syntax: {{YEAR->date_created}} - YEAR (function name), date_created (function argument)
 ```
