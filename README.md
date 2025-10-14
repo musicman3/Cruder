@@ -224,6 +224,8 @@ COUNT - similar to the COUNT(column) function in MySQL
 These functions are identical for MySQL, Postgree and SQLite, 
 so when changing the database on the fly, the result remains the same.
 ----------------------------------------------------------------------
+
+Syntax: {{YEAR->date_created}} - YEAR (function name), date_created (function argument)
 ```
 Example
 ```php
@@ -234,7 +236,6 @@ $data = Db::connect()
                 ->orderByDesc('id')
                 ->save();
 
-Syntax: {{YEAR->date_created}} - YEAR (function name), date_created (function argument)
 ```
 
 Using your own syntax to work with database functions allows you to use multiple types of databases simultaneously. For example, you can use MySQL or Postgres. New functions can always be added through the pattern located in the database adapter section. For MySQL, this pattern is located in `Mysql/DbFunctions->pattern()`.
