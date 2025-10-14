@@ -1,6 +1,7 @@
 # Cruder Query Builder
 
-Project installation: `composer require musicman3/cruder`
+### Project installation:
+`composer require musicman3/cruder`
 
 ### System requirements: 
   - OS Unix, Linux or Windows
