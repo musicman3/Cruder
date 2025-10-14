@@ -187,6 +187,14 @@ interface CrudInterface {
     public function limit(mixed $offset, mixed $limit): object;
 
     /**
+     * OFFSET
+     * 
+     * @param mixed $offset offset value
+     * @return object
+     */
+    public function offset(mixed $offset): object;
+
+    /**
      * Any operator
      * 
      * @param string $operator Any operator

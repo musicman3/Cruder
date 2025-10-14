@@ -286,6 +286,17 @@ class Methods extends CrudHelper implements CrudInterface {
     }
 
     /**
+     * OFFSET
+     * 
+     * @param mixed $offset offset value
+     * @return object
+     */
+    public function offset(mixed $offset): object {
+        $this->method_chain .= 'OFFSET ' . $offset . ' ';
+        return $this;
+    }
+
+    /**
      * Any operator
      * 
      * @param string $operator Any operator

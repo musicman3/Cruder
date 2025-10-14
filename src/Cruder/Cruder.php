@@ -249,6 +249,16 @@ class Cruder implements CrudInterface {
     }
 
     /**
+     * OFFSET
+     * 
+     * @param mixed $offset offset value
+     * @return object
+     */
+    public function offset(mixed $offset): object {
+        return $this->crud->offset($offset);
+    }
+
+    /**
      * Any operator
      * 
      * @param string $operator Any operator

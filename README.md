@@ -237,12 +237,13 @@ or(string $identificator, mixed $value) - OR operator
 on(string $identificator, mixed $value) - ON operator
 using(string $identificator) - USING operator
 as(string $identificator) - AS operator
+limit(mixed $offset, mixed $limit) - LIMIT operator
+offset(mixed $offset) - OFFSET operator
 ---------------------------------------
 groupBy(string $identificator) - analog GROUP BY
 orderBy(string $identificator) - analog ORDER BY
 orderByDesc(string $identificator) - analog ORDER BY identificator DESC
 orderByAsc(string $identificator) - analog ORDER BY identificator ASC
-limit(mixed $offset, mixed $limit) - analog LIMIT (a,b)
 innerJoin(string $identificator) - analog INNER JOIN
 leftJoin(string $identificator) - analog LEFT JOIN
 ----------------------------------------
