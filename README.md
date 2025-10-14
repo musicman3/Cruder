@@ -206,7 +206,24 @@ Db::get()
 A list of available database functions used in SQL queries (the basic functionality is identical to their MySQL counterparts). These functions operate identically across all supported databases, allowing you to perform specific actions within the SQL query. This reduces the burden on subsequent PHP processing in your project.
 
 ```
-YEAR, MONTH, DAYOFWEEK, DAY, DAYOFYEAR, QUARTER, HOUR, UNIX_TIMESTAMP, LIKE, CAST AS CHAR, MIN, MAX, COUNT
+YEAR - similar to the YEAR(datetime) function in MySQL
+MONTH - similar to the MONTH(datetime) function in MySQL
+DAYOFWEEK - similar to the DAYOFWEEK(datetime) function in MySQL
+DAY - similar to the DAY(datetime) function in MySQL
+DAYOFYEAR - similar to the DAYOFYEAR(datetime) function in MySQL
+QUARTER - similar to the QUARTER(datetime) function in MySQL
+HOUR - similar to the HOUR(datetime) function in MySQL
+UNIX_TIMESTAMP - similar to the UNIX_TIMESTAMP(datetime) function in MySQL
+LIKE - similar to the LIKE function in MySQL
+CAST AS CHAR - similar to the CAST(value AS CHAR) function in MySQL
+MIN - similar to the MIN(value) function in MySQL
+MAX - similar to the MAX(value) function in MySQL
+COUNT - similar to the COUNT(column) function in MySQL
+
+----------------------------------------------------------------------
+These functions are identical for MySQL, Postgree and SQLite, 
+so when changing the database on the fly, the result remains the same.
+----------------------------------------------------------------------
 ```
 Example
 ```php
@@ -225,12 +242,12 @@ Using your own syntax to work with database functions allows you to use multiple
 All available methods can be viewed in the files CrudInterface.php or by viewing the description of these methods using tooltips in your IDE.
 
 ```php
-create(string $table) - analog INSERT INTO
-read(string $table) - analog SELECT
-update(string $table) - analog UPDATE
-delete(string $table) - analog DELETE FROM
-readDistinct(string $table) - analog SELECT DISTINCT
-drop(string $table) - analog DROP TABLE
+create(string $table) - INSERT INTO
+read(string $table) - SELECT
+update(string $table) - UPDATE
+delete(string $table) - DELETE FROM
+readDistinct(string $table) - SELECT DISTINCT
+drop(string $table) - DROP TABLE
 ---------------------------------------
 set(string $identificator, mixed $value) - SET operator
 where(string $identificator, mixed $value) - WHERE operator
