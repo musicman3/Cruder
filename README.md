@@ -234,8 +234,6 @@ set(string $identificator, mixed $value) - SET operator
 where(string $identificator, mixed $value) - WHERE operator
 and(string $identificator, mixed $value) - AND operator
 or(string $identificator, mixed $value) - OR operator
-innerJoin(string $identificator) - INNER JOIN
-leftJoin(string $identificator) - LEFT JOIN operator
 on(string $identificator, mixed $value) - ON operator
 using(string $identificator) - USING operator
 as(string $identificator) - AS operator
@@ -245,6 +243,8 @@ orderBy(string $identificator) - analog ORDER BY
 orderByDesc(string $identificator) - analog ORDER BY identificator DESC
 orderByAsc(string $identificator) - analog ORDER BY identificator ASC
 limit(mixed $offset, mixed $limit) - analog LIMIT (a,b)
+innerJoin(string $identificator) - analog INNER JOIN
+leftJoin(string $identificator) - analog LEFT JOIN
 ----------------------------------------
 Any other operator that you can specify yourself
 operator(string $operator, string $identificator, mixed $value)
