@@ -24,20 +24,20 @@ use Cruder\Sqlite\SqliteAdapter;
  */
 class Cruder implements CrudInterface {
 
-    public $crud = false;
+    public $crud;
 
     /**
      * Constructor
      *
      */
     function __construct() {
-        if (Pdo::$set['db_type'] == 'mysql' && !$this->crud) {
+        if (Pdo::$set['db_type'] == 'mysql') {
             $this->crud = new MysqlAdapter();
         }
-        if (Pdo::$set['db_type'] == 'pgsql' && !$this->crud) {
+        if (Pdo::$set['db_type'] == 'pgsql') {
             $this->crud = new PgAdapter();
         }
-        if (Pdo::$set['db_type'] == 'sqlite' && !$this->crud) {
+        if (Pdo::$set['db_type'] == 'sqlite') {
             $this->crud = new SqliteAdapter();
         }
     }
