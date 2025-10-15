@@ -283,7 +283,7 @@ save() - Query Termination Operator. Terminates a query chain.
 debug() - If set instead of save(), the SQL query string will be output 
 to the browser and then the save() method will be executed.
 ----------------------------------------
-dbInstall(string $path, string $db_prefix = 'emkt_') - Install DB-file
+dbInstall(string $path, string $db_prefix = 'emkt_') - Install DB-file (.sql)
 exec(string $data) - PDO exec() operator
 
 ```
