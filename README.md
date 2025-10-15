@@ -251,22 +251,22 @@ delete(string $table) - DELETE FROM
 readDistinct(string $table) - SELECT DISTINCT
 drop(string $table) - DROP TABLE
 ---------------------------------------
-set(string $identificator, mixed $value) - SET operator
-where(string $identificator, mixed $value) - WHERE operator
-and(string $identificator, mixed $value) - AND operator
-or(string $identificator, mixed $value) - OR operator
-on(string $identificator, mixed $value) - ON operator
-using(string $identificator) - USING operator
-as(string $identificator) - AS operator
-limit(mixed $offset, mixed $limit) - LIMIT operator
-offset(mixed $offset) - OFFSET operator
+set(string $identificator, mixed $value) - SET
+where(string $identificator, mixed $value) - WHERE
+and(string $identificator, mixed $value) - AND
+or(string $identificator, mixed $value) - OR
+on(string $identificator, mixed $value) - ON
+using(string $identificator) - USING
+as(string $identificator) - AS
+limit(mixed $offset, mixed $limit) - LIMIT
+offset(mixed $offset) - OFFSET
 ---------------------------------------
-groupBy(string $identificator) - analog GROUP BY
-orderBy(string $identificator) - analog ORDER BY
-orderByDesc(string $identificator) - analog ORDER BY identificator DESC
-orderByAsc(string $identificator) - analog ORDER BY identificator ASC
-innerJoin(string $identificator) - analog INNER JOIN
-leftJoin(string $identificator) - analog LEFT JOIN
+groupBy(string $identificator) - GROUP BY
+orderBy(string $identificator) - ORDER BY
+orderByDesc(string $identificator) - ORDER BY identificator DESC
+orderByAsc(string $identificator) - ORDER BY identificator ASC
+innerJoin(string $identificator) - INNER JOIN
+leftJoin(string $identificator) - LEFT JOIN
 ----------------------------------------
 Any other operator that you can specify yourself
 operator(string $operator, string $identificator, mixed $value)
