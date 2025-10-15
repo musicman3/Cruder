@@ -33,15 +33,15 @@ class Cruder implements CrudInterface {
      */
     function __construct() {
         if (Pdo::$set['db_type'] == 'mysql' && $this->db_type != 'mysql') {
-            $this->db_type = Pdo::$set['db_type'];
+            $this->db_type = 'mysql';
             $this->crud = new MysqlAdapter();
         }
         if (Pdo::$set['db_type'] == 'pgsql' && $this->db_type != 'pgsql') {
-            $this->db_type = Pdo::$set['db_type'];
+            $this->db_type = 'pgsql';
             $this->crud = new PgAdapter();
         }
         if (Pdo::$set['db_type'] == 'sqlite' && $this->db_type != 'sqlite') {
-            $this->db_type = Pdo::$set['db_type'];
+            $this->db_type = 'sqlite';
             $this->crud = new SqliteAdapter();
         }
     }
