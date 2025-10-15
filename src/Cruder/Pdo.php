@@ -21,7 +21,7 @@ namespace Cruder;
 class Pdo {
 
     public static $query_count = 0;
-    private static $connect = null;
+    public static $connect = null;
 
     /** DB Settings
 
@@ -128,7 +128,7 @@ class Pdo {
         $result = FALSE;
         $exec = self::connect()->prepare($sql);
         if ($exec && $exec->execute($param)) {
-            $result = $exec->fetchAll(\PDO :: FETCH_NUM);
+            $result = $exec->fetchAll(\PDO::FETCH_NUM);
         }
         return CrudHelper::outputDataFiltering($result);
     }
@@ -145,7 +145,7 @@ class Pdo {
         $result = FALSE;
         $exec = self::connect()->prepare($sql);
         if ($exec && $exec->execute($param)) {
-            $result = $exec->fetchAll(\PDO :: FETCH_ASSOC);
+            $result = $exec->fetchAll(\PDO::FETCH_ASSOC);
         }
         return CrudHelper::outputDataFiltering($result);
     }
@@ -162,7 +162,7 @@ class Pdo {
         $result = FALSE;
         $exec = self::connect()->prepare($sql);
         if ($exec && $exec->execute($param)) {
-            $result = $exec->fetchAll(\PDO :: FETCH_OBJ);
+            $result = $exec->fetchAll(\PDO::FETCH_OBJ);
         }
         return $result;
     }
@@ -226,5 +226,4 @@ class Pdo {
         $result = self::connect()->lastInsertId();
         return $result;
     }
-
 }

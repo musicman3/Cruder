@@ -32,6 +32,14 @@ class SqliteAdapter extends Methods {
     protected $debug = FALSE;
 
     /**
+     * Constructor
+     *
+     */
+    function __construct() {
+        Pdo::$connect = null;
+    }
+
+    /**
      * Create, Update and Delete Builder (INSERT INTO, UPDATE, DELETE FROM)
      * 
      * @param string $assistant assistant data
