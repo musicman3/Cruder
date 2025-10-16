@@ -128,13 +128,19 @@ class SqliteAdapter extends Methods {
      */
     protected function finalData(string $data): mixed {
 
+        Pdo::connect()->beginTransaction();
+
         $assistant = $this->assistant($data);
 
         if ($this->action == 'create' || $this->action == 'update' || $this->action == 'delete' || $this->action == 'drop') {
-            return $this->createUpdateDeleteBuilder($assistant);
+            $output = $this->createUpdateDeleteBuilder($assistant);
+        } else {
+            $output = $this->readBuilder($assistant);
         }
 
-        return $this->readBuilder($assistant);
+        Pdo::connect()->commit();
+
+        return $output;
     }
 
     /**
