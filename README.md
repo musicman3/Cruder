@@ -38,9 +38,9 @@ Db::set([
         'db_password' => 'my_password',
         'db_prefix' => 'emkt_',
         'db_port' => '3306', // optional, not required for sqlite
-        'db_family' => 'innodb', // myisam, only for MySQL
-        'db_charset' => 'utf8mb4', // only for MySQL
-        'db_collate' => 'utf8mb4_unicode_ci', // only for MySQL
+        'db_family' => 'innodb', // myisam, only for MySQL or empty
+        'db_charset' => 'utf8mb4', // only for MySQL or empty
+        'db_collate' => 'utf8mb4_unicode_ci', // only for MySQL or empty
         'db_error_url' => '/my_error_page/?error_message=', // optional
         'db_path' => 'localhost/storage/databases/sqlite.db3' // optional, path to SQLite DB
     ]);
