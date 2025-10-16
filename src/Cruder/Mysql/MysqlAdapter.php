@@ -32,14 +32,6 @@ class MysqlAdapter extends Methods {
     protected $debug = FALSE;
 
     /**
-     * Constructor
-     *
-     */
-    function __construct() {
-        Pdo::$connect = null;
-    }
-
-    /**
      * Create, Update and Delete Builder (INSERT INTO, UPDATE, DELETE FROM)
      * 
      * @param string $assistant assistant data
@@ -129,8 +121,6 @@ class MysqlAdapter extends Methods {
      */
     protected function finalData(string $data): mixed {
 
-        Pdo::connect()->beginTransaction();
-
         $assistant = $this->assistant($data);
 
         if ($this->action == 'create' || $this->action == 'update' || $this->action == 'delete' || $this->action == 'drop') {
@@ -138,8 +128,6 @@ class MysqlAdapter extends Methods {
         } else {
             $output = $this->readBuilder($assistant);
         }
-
-        Pdo::connect()->commit();
 
         return $output;
     }

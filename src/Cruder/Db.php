@@ -46,8 +46,11 @@ class Db {
      * @param array $data Settings data
      */
     public static function set(array $data): void {
-
         Pdo::$set = $data;
+        Pdo::$connect = null;
+        if (Pdo::$set['db_transaction'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
+            Pdo::connect()->beginTransaction();
+        }
     }
 
     /**
@@ -75,6 +78,9 @@ class Db {
      */
     public static function close(): void {
 
+        if (Pdo::$set['db_transaction'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
+            Pdo::connect()->commit();
+        }
         Pdo::connect('close');
     }
 

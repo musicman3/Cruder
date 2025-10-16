@@ -31,6 +31,7 @@ use \Cruder\Db;
 // DB settings
 Db::set([
         'db_type' => 'mysql', // pgsql, sqlite
+        'db_transaction' => 'true', // false
         'db_server' => 'localhost',
         'db_name' => 'my_base',
         'db_username' => 'root',
