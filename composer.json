@@ -3,7 +3,7 @@
     "description": "CRUD Query Builder with PDO",
     "type": "library",
     "require": {
-        "php": "^8.2"
+        "php": "^8.3"
     },
     "license": "Apache-2.0",
     "autoload": {
