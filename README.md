@@ -32,12 +32,12 @@ use \Cruder\Db;
 Db::set([
         'db_type' => 'mysql', // pgsql, sqlite
         'db_transactions' => 'true', // false
-        'db_server' => 'localhost',
+        'db_server' => 'localhost', // optional, not required for sqlite
         'db_name' => 'my_base',
         'db_username' => 'root',
         'db_password' => 'my_password',
         'db_prefix' => 'emkt_',
-        'db_port' => '3306',
+        'db_port' => '3306', // optional, not required for sqlite
         'db_family' => 'innodb', // myisam, only for MySQL
         'db_charset' => 'utf8mb4', // only for MySQL
         'db_collate' => 'utf8mb4_unicode_ci', // only for MySQL
