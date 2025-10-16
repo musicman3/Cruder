@@ -45,6 +45,7 @@ class DbFunctions implements DbFunctionsInterface {
      * @param string $data DB Function data
      * @return mixed
      */
+    #[\Override]
     public function pattern($func, $data = ''): mixed {
         return $this->db_func->pattern($func, $data);
     }

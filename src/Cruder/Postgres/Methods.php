@@ -35,6 +35,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function create(string $table): object {
         $this->action = 'create';
         $this->table = $table;
@@ -47,6 +48,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function read(string $table): object {
         $this->table = $table;
         return $this;
@@ -58,6 +60,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function readDistinct(string $table): object {
         $this->action = 'readDistinct';
         $this->table = $table;
@@ -70,6 +73,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function update(string $table): object {
         $this->action = 'update';
         $this->table = $table;
@@ -82,6 +86,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function delete(string $table): object {
         $this->action = 'delete';
         $this->table = $table;
@@ -94,6 +99,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function drop(string $table): object {
         $this->action = 'drop';
         $this->table = $table;
@@ -107,6 +113,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function set(string $identificator, mixed $value): object {
         if ($value === false || $value === '') {
             $value = null;
@@ -126,6 +133,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function where(string $identificator, mixed $value): object {
         if ($value === false || $value === '') {
             $value = null;
@@ -143,6 +151,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function and(string $identificator, mixed $value): object {
         if ($value === false || $value === '') {
             $value = null;
@@ -160,6 +169,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function or(string $identificator, mixed $value): object {
         if ($value === false || $value === '') {
             $value = null;
@@ -176,6 +186,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function innerJoin(string $identificator): object {
         $this->method_chain .= 'INNER JOIN ' . $identificator . ' ';
         return $this;
@@ -187,6 +198,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function leftJoin(string $identificator): object {
         $this->method_chain .= 'LEFT JOIN ' . $identificator . ' ';
         return $this;
@@ -199,6 +211,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function on(string $identificator, mixed $value): object {
         if ($value === false || $value === '') {
             $value = null;
@@ -214,6 +227,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator USING identificator
      * @return object
      */
+    #[\Override]
     public function using(string $identificator): object {
         $this->method_chain .= 'USING (' . $identificator . ')';
         return $this;
@@ -225,6 +239,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function as(string $identificator): object {
         $this->method_chain .= 'AS ' . $identificator . ' ';
         return $this;
@@ -236,6 +251,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function groupBy(string $identificator): object {
         $this->method_chain .= 'GROUP BY ' . $identificator . ' ';
         return $this;
@@ -247,6 +263,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function orderBy(string $identificator): object {
         $this->method_chain .= 'ORDER BY ' . $identificator . ' ';
         return $this;
@@ -258,6 +275,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function orderByDesc(string $identificator): object {
         $this->method_chain .= 'ORDER BY ' . $identificator . ' DESC ';
         return $this;
@@ -269,6 +287,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function orderByAsc(string $identificator): object {
         $this->method_chain .= 'ORDER BY ' . $identificator . ' ASC ';
         return $this;
@@ -281,6 +300,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $limit limit value
      * @return object
      */
+    #[\Override]
     public function limit(mixed $offset, mixed $limit = null): object {
         if ($limit === '' || $limit === null) {
             $this->method_chain .= 'LIMIT ' . $offset . ' ';
@@ -296,6 +316,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $offset offset value
      * @return object
      */
+    #[\Override]
     public function offset(mixed $offset): object {
         $this->method_chain .= 'OFFSET ' . $offset . ' ';
         return $this;
@@ -309,6 +330,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function operator(string $operator, string $identificator = '', mixed $value = ''): object {
         if ($value === false || $value === '') {
             $value = null;
@@ -332,6 +354,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectAssoc(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getAssoc';
@@ -344,6 +367,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectIndex(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getIndex';
@@ -356,6 +380,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectValue(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getValue';
@@ -368,6 +393,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectObj(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getObj';
@@ -380,6 +406,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectColCount(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getColCount';
@@ -392,6 +419,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectRowCount(string $identificator): object {
         $this->crud[$identificator] = '';
         $this->action = 'getRowCount';
@@ -403,6 +431,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * 
      * @return object
      */
+    #[\Override]
     public function lastInsertId(): object {
         $this->action = 'lastInsertId';
         return $this;
@@ -413,6 +442,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * 
      * @return mixed
      */
+    #[\Override]
     public function save(): mixed {
         if ($this->action == 'create') {
             return $this->finalData('INSERT INTO ' . $this->table . ' (' . rtrim($this->insert, ', ') . ') VALUES (' . rtrim($this->values, ', ') . ') ');
@@ -437,6 +467,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * 
      * @return mixed
      */
+    #[\Override]
     public function debug(): mixed {
         $this->debug = 'true';
         return $this->save();
@@ -449,6 +480,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $db_prefix Prefix in the database to be replaced with the one set
      * @return mixed
      */
+    #[\Override]
     public function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
 
         $set = Pdo::$set;
@@ -466,6 +498,7 @@ class Methods extends CrudHelper implements CrudInterface {
      * @param string $data SQL data
      * @return mixed
      */
+    #[\Override]
     public function exec(string $data): mixed {
 
         Pdo::getExec($data);

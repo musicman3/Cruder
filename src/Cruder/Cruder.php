@@ -52,6 +52,7 @@ class Cruder implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function create(string $table): object {
         return $this->crud->create($table);
     }
@@ -62,6 +63,7 @@ class Cruder implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function read(string $table): object {
         return $this->crud->read($table);
     }
@@ -72,6 +74,7 @@ class Cruder implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function readDistinct(string $table): object {
         return $this->crud->readDistinct($table);
     }
@@ -82,6 +85,7 @@ class Cruder implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function update(string $table): object {
         return $this->crud->update($table);
     }
@@ -92,6 +96,7 @@ class Cruder implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function delete(string $table): object {
         return $this->crud->delete($table);
     }
@@ -102,6 +107,7 @@ class Cruder implements CrudInterface {
      * @param string $table table name
      * @return object
      */
+    #[\Override]
     public function drop(string $table): object {
         return $this->crud->drop($table);
     }
@@ -113,6 +119,7 @@ class Cruder implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function set(string $identificator, mixed $value): object {
         return $this->crud->set($identificator, $value);
     }
@@ -124,6 +131,7 @@ class Cruder implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function where(string $identificator, mixed $value): object {
         return $this->crud->where($identificator, $value);
     }
@@ -135,6 +143,7 @@ class Cruder implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function and(string $identificator, mixed $value): object {
         return $this->crud->and($identificator, $value);
     }
@@ -146,6 +155,7 @@ class Cruder implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function or(string $identificator, mixed $value): object {
         return $this->crud->or($identificator, $value);
     }
@@ -156,6 +166,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function innerJoin(string $identificator): object {
         return $this->crud->leftJoin($identificator);
     }
@@ -166,6 +177,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function leftJoin(string $identificator): object {
         return $this->crud->leftJoin($identificator);
     }
@@ -177,6 +189,7 @@ class Cruder implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function on(string $identificator, mixed $value): object {
         return $this->crud->on($identificator, $value);
     }
@@ -187,6 +200,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function using(string $identificator): object {
         return $this->crud->using($identificator);
     }
@@ -197,6 +211,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function as(string $identificator): object {
         return $this->crud->as($identificator);
     }
@@ -207,6 +222,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function groupBy(string $identificator): object {
         return $this->crud->groupBy($identificator);
     }
@@ -217,6 +233,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function orderBy(string $identificator): object {
         return $this->crud->orderBy($identificator);
     }
@@ -227,6 +244,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function orderByDesc(string $identificator): object {
         return $this->crud->orderByDesc($identificator);
     }
@@ -237,6 +255,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator identificator
      * @return object
      */
+    #[\Override]
     public function orderByAsc(string $identificator): object {
         return $this->crud->orderByAsc($identificator);
     }
@@ -248,6 +267,7 @@ class Cruder implements CrudInterface {
      * @param mixed $limit limit value
      * @return object
      */
+    #[\Override]
     public function limit(mixed $offset, mixed $limit): object {
         return $this->crud->limit($offset, $limit);
     }
@@ -258,6 +278,7 @@ class Cruder implements CrudInterface {
      * @param mixed $offset offset value
      * @return object
      */
+    #[\Override]
     public function offset(mixed $offset): object {
         return $this->crud->offset($offset);
     }
@@ -270,6 +291,7 @@ class Cruder implements CrudInterface {
      * @param mixed $value Identificator Value
      * @return object
      */
+    #[\Override]
     public function operator(string $operator, string $identificator, mixed $value): object {
         return $this->crud->operator($operator, $identificator, $value);
     }
@@ -280,6 +302,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectAssoc(string $identificator): object {
         return $this->crud->selectAssoc($identificator);
     }
@@ -290,6 +313,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectIndex(string $identificator): object {
         return $this->crud->selectIndex($identificator);
     }
@@ -300,6 +324,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectValue(string $identificator): object {
         return $this->crud->selectValue($identificator);
     }
@@ -310,6 +335,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectObj(string $identificator): object {
         return $this->crud->selectObj($identificator);
     }
@@ -320,6 +346,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectColCount(string $identificator): object {
         return $this->crud->selectColCount($identificator);
     }
@@ -330,6 +357,7 @@ class Cruder implements CrudInterface {
      * @param string $identificator SELECT identificators
      * @return object
      */
+    #[\Override]
     public function selectRowCount(string $identificator): object {
         return $this->crud->selectRowCount($identificator);
     }
@@ -339,6 +367,7 @@ class Cruder implements CrudInterface {
      * 
      * @return object
      */
+    #[\Override]
     public function lastInsertId(): object {
         return $this->crud->lastInsertId();
     }
@@ -348,6 +377,7 @@ class Cruder implements CrudInterface {
      * 
      * @return mixed
      */
+    #[\Override]
     public function save(): mixed {
         return $this->crud->save();
     }
@@ -357,6 +387,7 @@ class Cruder implements CrudInterface {
      * 
      * @return mixed
      */
+    #[\Override]
     public function debug(): mixed {
         return $this->crud->debug();
     }
@@ -368,6 +399,7 @@ class Cruder implements CrudInterface {
      * @param string $db_prefix Prefix in the database to be replaced with the one set
      * @return mixed
      */
+    #[\Override]
     public function dbInstall(string $path, string $db_prefix = 'emkt_'): mixed {
         return $this->crud->dbInstall($path, $db_prefix);
     }
@@ -378,6 +410,7 @@ class Cruder implements CrudInterface {
      * @param string $data SQL data
      * @return mixed
      */
+    #[\Override]
     public function exec(string $data): mixed {
         return $this->crud->exec($data);
     }

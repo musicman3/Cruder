@@ -60,6 +60,7 @@ class CrudHelper {
     private function originalSyntax(string $input): mixed {
 
         $DbPattern = new DbFunctions();
+        $data = null;
 
         preg_match_all('|{{(.*)}}|isU', $input, $data);
 
