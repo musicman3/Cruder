@@ -121,6 +121,18 @@ Db::connect()
          ->set('text', 'This is my text')
          ->debug();
 
+//Transactions On/Off
+Db::transactions('off'); //Transactions Off
+
+Db::connect()
+         ->create('my_table')
+         ->set('id', 10)
+         ->set('order', 5)
+         ->set('text', 'This is my text')
+         ->debug();
+
+Db::transactions('on'); //Transactions On
+
 ```
 If you need to connect to another database, you must specify its settings and then return the previous settings after you have finished working with this database. This allows one project to use unlimited connections to different databases located on different servers.
 

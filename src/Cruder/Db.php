@@ -28,7 +28,7 @@ class Db {
     public static $db_functions = false;
 
     /**
-     * PDO Set
+     * DB Settings
 
      * EXAMPLE:
 
@@ -55,13 +55,36 @@ class Db {
     }
 
     /**
-     * PDO Get
+     * Get settings
      * 
      * @return array|null
      */
     public static function get(): array|null {
 
         return Pdo::$set;
+    }
+
+    /**
+     * Transactions On/Off
+     * 
+     * @param string $switch Transactions On/Off
+     * 
+     */
+    public static function transactions(string $switch): void {
+
+        if ($switch == 'on') {
+            Pdo::connect('close');
+            Pdo::$connect = null;
+            Pdo::$set['db_transactions'] = 'true';
+        }
+        if ($switch == 'off') {
+            if (Pdo::connect()->inTransaction() == true) {
+                Pdo::connect()->commit();
+            }
+            Pdo::connect('close');
+            Pdo::$connect = null;
+            Pdo::$set['db_transactions'] = 'false';
+        }
     }
 
     /**
@@ -79,7 +102,7 @@ class Db {
      */
     public static function close(): void {
 
-        if (Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
+        if (Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam' && Pdo::connect()->inTransaction() == true) {
             Pdo::connect()->commit();
         }
         Pdo::connect('close');
