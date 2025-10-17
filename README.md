@@ -31,7 +31,6 @@ use \Cruder\Db;
 // DB settings
 Db::set([
         'db_type' => 'mysql', // pgsql, sqlite
-        'db_transactions' => 'true', // false
         'db_server' => 'localhost', // optional, not required for sqlite
         'db_name' => 'my_base',
         'db_username' => 'root',
@@ -44,6 +43,7 @@ Db::set([
         'db_error_url' => '/my_error_page/?error_message=', // optional
         'db_path' => 'localhost/storage/databases/sqlite.db3' // optional, path to SQLite DB
     ]);
+Db::transactions('on'); //Transactions On
 
 // Here we perform various actions that you will need for your project.
 Db::connect()->read('my_table')

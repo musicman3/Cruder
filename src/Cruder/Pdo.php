@@ -78,7 +78,7 @@ class Pdo {
                     self::$connect = new \PDO(self::$set['db_type'] . ':' . self::$set['db_path'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
                 }
             } catch (\PDOException $error) {
-                if (Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
+                if (isset(Pdo::$set['db_transactions']) && Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
                     self::$connect->rollBack();
                 }
                 if (isset(self::$set['db_error_url'])) {

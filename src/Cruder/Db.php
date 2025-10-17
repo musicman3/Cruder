@@ -49,9 +49,6 @@ class Db {
         Pdo::$set = $data;
         Pdo::connect('close');
         Pdo::$connect = null;
-        if (Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
-            Pdo::connect()->beginTransaction();
-        }
     }
 
     /**
@@ -85,6 +82,10 @@ class Db {
             Pdo::$connect = null;
             Pdo::$set['db_transactions'] = 'false';
         }
+
+        if (isset(Pdo::$set['db_transactions']) && Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
+            Pdo::connect()->beginTransaction();
+        }
     }
 
     /**
@@ -102,7 +103,7 @@ class Db {
      */
     public static function close(): void {
 
-        if (Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam' && Pdo::connect()->inTransaction() == true) {
+        if (isset(Pdo::$set['db_transactions']) && Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam' && Pdo::connect()->inTransaction() == true) {
             Pdo::connect()->commit();
         }
         Pdo::connect('close');
