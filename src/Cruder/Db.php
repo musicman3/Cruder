@@ -47,6 +47,7 @@ class Db {
      */
     public static function set(array $data): void {
         Pdo::$set = $data;
+        Pdo::connect('close');
         Pdo::$connect = null;
         if (Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
             Pdo::connect()->beginTransaction();
