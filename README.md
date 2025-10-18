@@ -30,25 +30,26 @@ use \Cruder\Db;
 
 // DB settings
 
-    Db::config(
-            [
-                'mysql' =>
-                [
-                    'db_driver' => 'mysql', // pgsql, sqlite
-                    'db_server' => 'localhost', // optional, not required for sqlite
-                    'db_name' => 'my_base',
-                    'db_username' => 'root',
-                    'db_password' => 'my_password',
-                    'db_prefix' => 'emkt_',
-                    'db_port' => '3306', // optional, not required for sqlite
-                    'db_family' => 'innodb', // myisam, only for MySQL or empty
-                    'db_charset' => 'utf8mb4', // only for MySQL or empty
-                    'db_collate' => 'utf8mb4_unicode_ci', // only for MySQL or empty
-                    'db_error_url' => '/my_error_page/?error_message=', // optional
-                    'db_path' => 'localhost/storage/databases/sqlite.db3' // optional, path to SQLite DB
-                ]
-            ]
-    );
+Db::config(
+    [
+        'mysql' =>
+        [
+            'db_driver' => 'mysql', // pgsql, sqlite
+            'db_server' => 'localhost', // optional, not required for sqlite
+            'db_name' => 'my_base',
+            'db_username' => 'root',
+            'db_password' => 'my_password',
+            'db_prefix' => 'emkt_',
+            'db_port' => '3306', // optional, not required for sqlite
+            'db_family' => 'innodb', // myisam, only for MySQL or empty
+            'db_charset' => 'utf8mb4', // only for MySQL or empty
+            'db_collate' => 'utf8mb4_unicode_ci', // only for MySQL or empty
+            'db_error_url' => '/my_error_page/?error_message=', // optional
+            'db_path' => 'localhost/storage/databases/sqlite.db3' // optional, path to SQLite DB
+        ]
+    ]
+);
+
 Db::use('mysql')->transactions('on'); //Use MySQL and Transactions On
 // Db::use('mysql'); //Use MySQL without transactions
 
@@ -147,33 +148,33 @@ If you need to connect to another database, you must specify its settings and th
 use \Cruder\Db;
 
 Db::config(
-            [
-                'mysql' =>
-                [
-                    'db_driver' => 'mysql', // pgsql, sqlite
-                    'db_server' => 'localhost', // optional, not required for sqlite
-                    'db_name' => 'my_base',
-                    'db_username' => 'root',
-                    'db_password' => 'my_password',
-                    'db_prefix' => 'emkt_',
-                    'db_port' => '3306', // optional, not required for sqlite
-                    'db_family' => 'innodb', // myisam, only for MySQL or empty
-                    'db_charset' => 'utf8mb4', // only for MySQL or empty
-                    'db_collate' => 'utf8mb4_unicode_ci', // only for MySQL or empty
-                    'db_error_url' => '/my_error_page/?error_message=', // optional
-                    'db_path' => 'localhost/storage/databases/sqlite.db3' // optional, path to SQLite DB
-                ],
-                'sqlite' =>
-                [
-                    'db_driver' => 'sqlite',
-                    'db_name' => 'my_base',
-                    'db_username' => 'root',
-                    'db_password' => 'my_password',
-                    'db_prefix' => 'emkt_',
-                    'db_path' => 'localhost/storage/databases/sqlite.db3'
-                ]
-            ]
-    );
+    [
+        'mysql' =>
+        [
+            'db_driver' => 'mysql', // pgsql, sqlite
+            'db_server' => 'localhost', // optional, not required for sqlite
+            'db_name' => 'my_base',
+            'db_username' => 'root',
+            'db_password' => 'my_password',
+            'db_prefix' => 'emkt_',
+            'db_port' => '3306', // optional, not required for sqlite
+            'db_family' => 'innodb', // myisam, only for MySQL or empty
+            'db_charset' => 'utf8mb4', // only for MySQL or empty
+            'db_collate' => 'utf8mb4_unicode_ci', // only for MySQL or empty
+            'db_error_url' => '/my_error_page/?error_message=', // optional
+            'db_path' => 'localhost/storage/databases/sqlite.db3' // optional, path to SQLite DB
+        ],
+        'sqlite' =>
+        [
+            'db_driver' => 'sqlite',
+            'db_name' => 'my_base',
+            'db_username' => 'root',
+            'db_password' => 'my_password',
+            'db_prefix' => 'emkt_',
+            'db_path' => 'localhost/storage/databases/sqlite.db3'
+        ]
+    ]
+);
 
 //---------------------------------------------------------- MySQL
 
