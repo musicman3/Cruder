@@ -40,15 +40,15 @@ class Db {
     /**
      * Use the selected database
      * 
-     * @param string $driver Settings data
+     * @param string $db Db Config name
      * @return object
      */
-    public static function use(string $driver): object {
+    public static function use(string $db): object {
 
         self::close();
 
-        if (isset(self::$config[$driver])) {
-            Pdo::$set = self::$config[$driver];
+        if (isset(self::$config[$db])) {
+            Pdo::$set = self::$config[$db];
         }
         Pdo::$connect = null;
 
