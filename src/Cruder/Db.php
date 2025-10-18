@@ -41,8 +41,9 @@ class Db {
      * Use the selected database
      * 
      * @param string $driver Settings data
+     * @return object
      */
-    public static function use(string $driver): void {
+    public static function use(string $driver): object {
 
         self::close();
 
@@ -50,6 +51,8 @@ class Db {
             Pdo::$set = self::$config[$driver];
         }
         Pdo::$connect = null;
+
+        return new static;
     }
 
     /**
@@ -62,10 +65,9 @@ class Db {
     }
 
     /**
-     * Transactions On/Off
+     * Transactions on/off
      * 
-     * @param string $switch Transactions On/Off
-     * 
+     * @param string $switch Transactions on/off
      */
     public static function transactions(string $switch): void {
 

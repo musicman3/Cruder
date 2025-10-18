@@ -49,8 +49,8 @@ use \Cruder\Db;
                 ]
             ]
     );
-Db::use('mysql');
-Db::transactions('on'); //Transactions On
+Db::use('mysql')->transactions('on'); //Use MySQL and Transactions On
+// Db::use('mysql'); //Use MySQL without transactions
 
 // Here we perform various actions that you will need for your project.
 Db::connect()->read('my_table')
@@ -178,8 +178,7 @@ Db::config(
 //---------------------------------------------------------- MySQL
 
 // MySQL DB settings
-Db::use('mysql');
-Db::transactions('on'); //Transactions On
+Db::use('mysql')->transactions('on'); //Use MySQL and Transactions On
 
 // We execute queries to the master database
 Db::connect()
@@ -192,8 +191,7 @@ Db::connect()
 //---------------------------------------------------------- SQLite
 
 // SQLite DB settings
-Db::use('sqlite');
-Db::transactions('on'); //Transactions On
+Db::use('sqlite')->transactions('on'); //Use SQLite and Transactions On
 
 //We execute queries to the slave database
 Db::connect()
@@ -206,8 +204,7 @@ Db::connect()
 //---------------------------------------------------------- MySQL
 
 // MySQL DB settings
-Db::use('mysql');
-Db::transactions('on'); //Transactions On
+Db::use('mysql')->transactions('on'); //Use MySQL and Transactions On
 
 // We execute queries to the master database
 $id = Db::connect()
