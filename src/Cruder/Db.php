@@ -26,28 +26,29 @@ use Cruder\{
 class Db {
 
     public static $db_functions = false;
+    public static $config;
 
     /**
-     * DB Settings
-
-     * EXAMPLE:
-
-      $set = [
-      'db_type' => 'mysql',
-      'db_server' => 'localhost',
-      'db_name' => 'my_db',
-      'db_username' => 'root',
-      'db_password' => 'pass',
-      'db_prefix' => 'emkt_',
-      'db_port' => '3306',
-      'db_family' => 'myisam'
-      ];
+     * DB config
      * 
      * @param array $data Settings data
      */
-    public static function set(array $data): void {
-        Pdo::$set = $data;
-        Pdo::connect('close');
+    public static function config(array $data): void {
+        self::$config = $data;
+    }
+
+    /**
+     * Use the selected database
+     * 
+     * @param string $driver Settings data
+     */
+    public static function use(string $driver): void {
+
+        self::close();
+
+        if (isset(self::$config[$driver])) {
+            Pdo::$set = self::$config[$driver];
+        }
         Pdo::$connect = null;
     }
 
@@ -57,7 +58,6 @@ class Db {
      * @return array|null
      */
     public static function get(): array|null {
-
         return Pdo::$set;
     }
 

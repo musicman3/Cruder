@@ -22,27 +22,6 @@ class Pdo {
 
     public static $query_count = 0;
     public static $connect = null;
-
-    /** DB Settings
-
-     * EXAMPLE:
-
-      $set = [
-      'db_type' => 'mysql',
-      'db_server' => 'localhost',
-      'db_name' => 'my_db',
-      'db_username' => 'root',
-      'db_password' => 'pass',
-      'db_prefix' => 'emkt_',
-      'db_port' => '3306',
-      'db_family' => 'myisam',
-      'db_charset' => 'utf8mb4',
-      'db_collate' => 'utf8mb4_unicode_ci',
-      'db_error_url' => '/my_error_page/?error_message=',
-      'db_path' => '/my_db_path/sqlite.db'
-      ];
-
-     */
     public static $set;
 
     /**
@@ -78,7 +57,7 @@ class Pdo {
                     self::$connect = new \PDO(self::$set['db_type'] . ':' . self::$set['db_path'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
                 }
             } catch (\PDOException $error) {
-                if (isset(Pdo::$set['db_transactions']) && Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam') {
+                if (isset(Pdo::$set['db_transactions']) && Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam' && self::$connect != null) {
                     self::$connect->rollBack();
                 }
                 if (isset(self::$set['db_error_url'])) {
