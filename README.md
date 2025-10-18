@@ -176,9 +176,6 @@ Db::connect()
          ->set('text', 'This is my text')
          ->save();
 
-// Close DB connect
-Db::close();
-
 //---------------------------------------------------------- SQLite
 
 // SQLite DB settings
@@ -192,9 +189,6 @@ Db::connect()
          ->set('order', 5)
          ->set('text', 'This is my text')
          ->save();
-
-// Close DB connect
-Db::close();
 
 //---------------------------------------------------------- MySQL
 
