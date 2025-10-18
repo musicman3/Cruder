@@ -47,14 +47,14 @@ class Pdo {
         if (self::$connect == null) {
 
             try {
-                if (self::$set['db_type'] == 'mysql') {
-                    self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
+                if (self::$set['db_driver'] == 'mysql') {
+                    self::$connect = new \PDO(self::$set['db_driver'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
                 }
-                if (self::$set['db_type'] == 'pgsql') {
-                    self::$connect = new \PDO(self::$set['db_type'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
+                if (self::$set['db_driver'] == 'pgsql') {
+                    self::$connect = new \PDO(self::$set['db_driver'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
                 }
-                if (self::$set['db_type'] == 'sqlite') {
-                    self::$connect = new \PDO(self::$set['db_type'] . ':' . self::$set['db_path'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
+                if (self::$set['db_driver'] == 'sqlite') {
+                    self::$connect = new \PDO(self::$set['db_driver'] . ':' . self::$set['db_path'], self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
                 }
             } catch (\PDOException $error) {
                 if (isset(Pdo::$set['db_transactions']) && Pdo::$set['db_transactions'] == 'true' && Pdo::$set['db_family'] != 'myisam' && self::$connect != null) {

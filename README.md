@@ -34,7 +34,7 @@ use \Cruder\Db;
             [
                 'mysql' =>
                 [
-                    'db_type' => 'mysql', // pgsql, sqlite
+                    'db_driver' => 'mysql', // pgsql, sqlite
                     'db_server' => 'localhost', // optional, not required for sqlite
                     'db_name' => 'my_base',
                     'db_username' => 'root',
@@ -150,7 +150,7 @@ Db::config(
             [
                 'mysql' =>
                 [
-                    'db_type' => 'mysql', // pgsql, sqlite
+                    'db_driver' => 'mysql', // pgsql, sqlite
                     'db_server' => 'localhost', // optional, not required for sqlite
                     'db_name' => 'my_base',
                     'db_username' => 'root',
@@ -165,7 +165,7 @@ Db::config(
                 ],
                 'sqlite' =>
                 [
-                    'db_type' => 'sqlite',
+                    'db_driver' => 'sqlite',
                     'db_name' => 'my_base',
                     'db_username' => 'root',
                     'db_password' => 'my_password',

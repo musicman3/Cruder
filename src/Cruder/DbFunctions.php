@@ -27,13 +27,13 @@ class DbFunctions implements DbFunctionsInterface {
      *
      */
     function __construct() {
-        if (Pdo::$set['db_type'] == 'mysql') {
+        if (Pdo::$set['db_driver'] == 'mysql') {
             $this->db_func = new Mysql\DbFunctions();
         }
-        if (Pdo::$set['db_type'] == 'pgsql') {
+        if (Pdo::$set['db_driver'] == 'pgsql') {
             $this->db_func = new Postgres\DbFunctions();
         }
-        if (Pdo::$set['db_type'] == 'sqlite') {
+        if (Pdo::$set['db_driver'] == 'sqlite') {
             $this->db_func = new Sqlite\DbFunctions();
         }
     }
