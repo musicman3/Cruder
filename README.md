@@ -180,7 +180,6 @@ Db::connect()
 
 // SQLite DB settings
 Db::set($sqliteDB);
-Db::transactions('on'); //Transactions On
 
 //We execute queries to the slave database
 Db::connect()
@@ -194,7 +193,6 @@ Db::connect()
 
 // MySQL DB settings
 Db::set($mysqlDB);
-Db::transactions('on'); //Transactions On
 
 // We execute queries to the master database
 $id = Db::connect()
