@@ -61,7 +61,7 @@ class Db {
      * @return array|null
      */
     public static function get(): array|null {
-        return Pdo::$set;
+        return self::$config;
     }
 
     /**
