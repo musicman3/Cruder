@@ -1,6 +1,6 @@
 <?php
 
-/* =-=-=-= Copyright © 2023 Cruder =-=-=-=-=- 
+/* =-=-=-= Copyright © 2023 Cruder =-=-=-=-=-
   |           APACHE-2.0 LICENSE            |
   |   https://github.com/musicman3/Cruder   |
   =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
@@ -16,7 +16,7 @@ namespace Cruder;
  * @author Cruder Team
  * @copyright © 2023 Cruder
  * @license Apache-2.0
- * 
+ *
  */
 class CrudHelper {
 
@@ -34,7 +34,7 @@ class CrudHelper {
 
     /**
      * Output Data Normalization (removing empty values)
-     * 
+     *
      * @param mixed $array Input array
      * @return mixed
      */
@@ -54,7 +54,7 @@ class CrudHelper {
      * Example for MySQL:
      * Input: email, order_total, {DAYOFWEEK->date_purchased}
      * Output: email, order_total, DAYOFWEEK(date_purchased)
-     * 
+     *
      * @param string $input Input SQL not-formating string
      */
     private function originalSyntax(string $input): mixed {
@@ -80,15 +80,15 @@ class CrudHelper {
 
     /**
      * Function for escaping special characters.
-     * Output data filtering 
+     * Output data filtering
      *
      * @param string|array $data Data to escape characters
      * @return mixed
      */
     public static function outputDataFiltering(mixed $data): mixed {
         // symbol and replacement
-        $find = ["'", "script", "/.", "./"];
-        $replace = ["&#8216;", "!s-c-r-i-p-t!", "!/.!", "!./!"];
+        $find = ["'", "script", "/."];
+        $replace = ["&#8216;", "!s-c-r-i-p-t!", "!/.!"];
 
         $output = self::recursiveArrayReplace($find, $replace, $data);
 
@@ -125,7 +125,7 @@ class CrudHelper {
 
     /**
      * Debug formating line
-     * 
+     *
      * @param string|bool $debug bebug marker
      * @param string $input Input SQL string
      */
