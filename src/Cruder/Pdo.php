@@ -48,7 +48,7 @@ class Pdo {
 
             try {
                 if (self::$set['db_driver'] == 'mysql') {
-                    self::$connect = new \PDO(self::$set['db_driver'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
+                    self::$connect = new \PDO(self::$set['db_driver'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING, \Pdo\Mysql::ATTR_INIT_COMMAND => "SET NAMES " . self::$set['db_charset'] . " COLLATE " . self::$set['db_collate']]);
                 }
                 if (self::$set['db_driver'] == 'pgsql') {
                     self::$connect = new \PDO(self::$set['db_driver'] . $host, self::$set['db_username'], self::$set['db_password'], [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_WARNING]);
